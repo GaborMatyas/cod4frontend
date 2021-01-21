@@ -1,0 +1,70 @@
+
+.vote-item {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border: red solid 1px;
+
+    .day-container {
+        width: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: blue solid 1px;
+    }
+
+    .vote-container {
+        display: flex;
+        width: 90%;
+        flex-direction: column;
+        border: green solid 1px;
+
+        .progress-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+
+            .progress {
+                background: rgb(238, 238, 238) none repeat scroll 0% 0%;
+                width: 50%;
+                height: 5px;
+                transition: all 0.5s ease 0s;
+                margin: auto 20px auto 20px;
+                
+                .progress-bar {
+                    background: blue none repeat scroll 0% 0%;
+                    height: 5px;
+                    transition: all 0.5s ease 0s;
+                }
+                .progress-bar.winner {
+                    background: red none repeat scroll 0% 0%;
+                }
+            }
+
+            .votes-wrapper {
+                width: 20%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .calculated-votes.winner {
+                    color: red;
+                }
+            }
+        }
+
+        .members-voted {
+            display: flex;
+            width: 90%;
+            margin: 18 auto 18 auto;
+
+            .voter {
+                text-decoration: none;
+                list-style:none;
+                display: inline;
+                margin-right: 10px;
+            }
+        }
+    }
+}
