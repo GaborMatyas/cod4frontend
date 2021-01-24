@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: "./src/components/index.tsx",
+  entry: "./src/index.tsx",
   target: "web",
   mode: "development",
   output: {
@@ -27,20 +27,27 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
+          { loader: 'style-loader' },
+          { loader: 'css-loader', options: { sourceMap: true } },
+          { loader: 'sass-loader', options: { sourceMap: true } },
+          { loader: 'sass-resources-loader',
+            options: {
+              sourceMap: true,
+              resources: './src/global-styles/globals.scss',
+              hoistUseStatements: true
+            }
+          }
         ]
       },
-      {
-        test: /\.css$/,
-        loader: "css-loader",
-      },
+      {    
+        test: /\.(woff|woff2|eot|png|otf)$/,
+        loader: "file-loader"
+      }
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src", "components", "index.html"),
+      template: path.resolve(__dirname, "src", "index.html"),
     }),
     new MiniCssExtractPlugin({
       filename: "./src/yourfile.css",
