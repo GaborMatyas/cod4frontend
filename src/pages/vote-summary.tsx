@@ -1,36 +1,23 @@
-import React, { useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Header from '../components/header/header';
 import VoteTable from '../components/vote-summary/vote-table/vote-table';
-import { vote } from '../components/vote-summary/constants';
-
-import './vote-summary.scss';
-// import { getVotes } from '../utils/utils';
-
-const URL: string = "http://localhost:5000";
+import { fetchVotes } from '../store/votes/votes.slice';
+import { selectVoteState } from '../store/votes/votes.selectors';
 
 const VoteSummary = () =>{
-    const [fetchedVotes, setVotes] = useState<Array<vote> | undefined>(undefined);
-    
+
+    const dispatch = useDispatch();
     useEffect(() => {
-      const getVotes = async(url: string) => {
-        try {
-            const response = await fetch(url);
-            const json = await response.json();
-            setVotes([...json.votes]);
-        } catch (error) {
-            console.log(error);
-            throw new Error(error);
-        }    
-      }
-      getVotes(URL);
+      dispatch(fetchVotes());
     }, []);
     
     return(
         <>
             <Header/>
             {
-              fetchedVotes && <VoteTable votes={fetchedVotes}/>
+              <VoteTable votes={useSelector(selectVoteState).votes}/>
             }
 
         </>

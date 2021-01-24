@@ -1,6 +1,9 @@
 import React from 'react';
-import { vote } from '../constants';
+
+import ProgressBar from '../progress-bar/progress-bar';
+
 import './vote-item.scss'
+
 
 interface VoteItemProps {
     date: string,
@@ -9,7 +12,7 @@ interface VoteItemProps {
     progressBarSize: number
 }
 
-const VoteItem = ({date, members, isWinner, progressBarSize}: VoteItemProps )=> {
+const VoteItem = ({date, members, isWinner, progressBarSize}: VoteItemProps ): JSX.Element => {
     const votes = members.length;
     const progressBarLength = {
         width: `${progressBarSize}%`
@@ -18,15 +21,18 @@ const VoteItem = ({date, members, isWinner, progressBarSize}: VoteItemProps )=> 
     return (
         <div className="vote-item">
             <div className="day-container">
-                <span className="day">{date}</span>
+                <span className={`day ${isWinner ? "winner" : ""}`}>{date}</span>
             </div>
             <div className="vote-container">
                 <div className="progress-wrapper">
-                    <div className="progress">
+                    <ProgressBar isWinner={isWinner} progressBarSize={progressBarSize}/>
+                    {/* <div className="progress-bar">
                         <div 
-                        className={`progress-bar ${isWinner ? "winner" : ""}`}
-                        style={progressBarLength} ></div>
-                    </div>
+                        className={`progress ${isWinner ? "winner" : ""} fill`}
+                        style={progressBarLength} >
+                            <div className="glow"></div>
+                        </div>
+                    </div> */}
                     <div className="votes-wrapper">
                         <span className={`calculated-votes ${isWinner ? "winner" : ""}`}>
                             {votes}

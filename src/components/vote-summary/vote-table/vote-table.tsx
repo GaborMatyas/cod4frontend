@@ -1,6 +1,6 @@
 import React from 'react';
 import VoteItem from '../vote-item/vote-item';
-import { vote as voteType } from '../constants';
+import { vote as voteType } from '../types';
 
 import './vote-table.scss';
 
@@ -20,11 +20,9 @@ const VoteTable = (votes: VoteContainerProps): JSX.Element => {
         return parseFloat((currentVotes/mostVotes).toFixed(2))*100;
     }
 
-
     const voteItems = votes.votes.map((vote: voteType) => {
         const isWinner: boolean = mostVotes===vote.members.length;
         const progressBarSize = calculateProgressBar(mostVotes, vote.members.length);
-        console.log(progressBarSize);
         return(
             <VoteItem 
                 key={vote.date}

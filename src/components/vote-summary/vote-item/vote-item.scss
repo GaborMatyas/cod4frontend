@@ -1,69 +1,61 @@
-
 .vote-item {
+    background: $dark-gray-background;
+    background: linear-gradient(90deg, $dark-gray-background 0%, $medium-gray-background 33%, $medium-gray-background 66%, $dark-gray-background 100%);
+    border: 2px solid $dark-gray-background;
+    box-shadow: 0 1px 1px $medium-gray-background;
     display: flex;
-    width: 100%;
     justify-content: center;
-    border: red solid 1px;
+    width: 100%;
+    border-bottom: solid 1px $medium-gray-background;
 
     .day-container {
-        width: 10%;
-        display: flex;
         align-items: center;
+        // border: blue solid 1px;
+        display: flex;
         justify-content: center;
-        border: blue solid 1px;
+        width: 10%;
+
+        .day.winner {
+            color: $cod-green;
+        }
     }
 
     .vote-container {
         display: flex;
-        width: 90%;
         flex-direction: column;
-        border: green solid 1px;
+        min-width: 715;
+        width: 90%;
+        // border: green solid 1px;
 
         .progress-wrapper {
-            display: flex;
-            justify-content: center;
             align-items: center;
-            height: 50px;
+            display: flex;
+            height: 35px;
+            justify-content: center;
 
-            .progress {
-                background: rgb(238, 238, 238) none repeat scroll 0% 0%;
-                width: 50%;
-                height: 5px;
-                transition: all 0.5s ease 0s;
-                margin: auto 20px auto 20px;
-                
-                .progress-bar {
-                    background: blue none repeat scroll 0% 0%;
-                    height: 5px;
-                    transition: all 0.5s ease 0s;
-                }
-                .progress-bar.winner {
-                    background: red none repeat scroll 0% 0%;
-                }
-            }
-
+            
             .votes-wrapper {
-                width: 20%;
-                display: flex;
                 align-items: center;
+                display: flex;
                 justify-content: center;
+                width: 20%;
 
                 .calculated-votes.winner {
-                    color: red;
+                    color: $cod-green;
                 }
             }
         }
 
         .members-voted {
             display: flex;
+            margin: 5px auto;
             width: 90%;
-            margin: 18 auto 18 auto;
 
             .voter {
-                text-decoration: none;
-                list-style:none;
                 display: inline;
+                list-style:none;
                 margin-right: 10px;
+                text-decoration: none;
             }
         }
     }
