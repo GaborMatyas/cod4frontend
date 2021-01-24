@@ -1,7 +1,11 @@
 import React from 'react';
 
+import './header.scss';
+
 const Header = () =>(
-    <header><h1>CoD4 Legion</h1></header>
+    <header>
+        <div className="main-title"/>
+    </header>
 )
 
 export default Header;
