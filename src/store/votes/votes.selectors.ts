@@ -1,4 +1,4 @@
-import { RootState } from '../root.reducer';
-import { votes } from '../../components/vote-summary/types';
+import { RootState } from '@store/root.reducer';
+import { Votes } from '@components/vote-summary/types';
 
-export const selectVoteState = (state: RootState): votes => state.votes;
+export const selectVoteState = (state: RootState): Votes => state.votes;

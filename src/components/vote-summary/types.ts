@@ -1,7 +1,7 @@
-export interface vote {
+export interface Vote {
     date: string;
     members: Array<string>;
 }
-export interface votes {
-    votes: Array<vote>;
+export interface Votes {
+    votes: Array<Vote>;
 }

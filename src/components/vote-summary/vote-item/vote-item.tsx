@@ -1,46 +1,41 @@
 import React from 'react';
 
-import ProgressBar from '../progress-bar/progress-bar';
+import ProgressBar from '@components/vote-summary/progress-bar/progress-bar';
 
 import './vote-item.scss'
-
-
 interface VoteItemProps {
     date: string,
     members: Array<string>,
     isWinner: boolean,
-    progressBarSize: number
+    progressBarSize: number,
+    membersDidntVotedForThatDay: Array<string>
 }
 
-const VoteItem = ({date, members, isWinner, progressBarSize}: VoteItemProps ): JSX.Element => {
+const VoteItem = ({date, members, isWinner, progressBarSize, membersDidntVotedForThatDay}: VoteItemProps ): JSX.Element => {
     const votes = members.length;
-    const progressBarLength = {
-        width: `${progressBarSize}%`
-    } as const;
-
     return (
-        <div className="vote-item">
+        <div className={`vote-item ${isWinner ? "winner" : ""}`}>
             <div className="day-container">
-                <span className={`day ${isWinner ? "winner" : ""}`}>{date}</span>
+                <span className="day">{date}</span>
             </div>
             <div className="vote-container">
                 <div className="progress-wrapper">
                     <ProgressBar isWinner={isWinner} progressBarSize={progressBarSize}/>
-                    {/* <div className="progress-bar">
-                        <div 
-                        className={`progress ${isWinner ? "winner" : ""} fill`}
-                        style={progressBarLength} >
-                            <div className="glow"></div>
-                        </div>
-                    </div> */}
                     <div className="votes-wrapper">
-                        <span className={`calculated-votes ${isWinner ? "winner" : ""}`}>
+                        <span className="calculated-votes">
                             {votes}
                         </span>
                     </div>
                 </div>
                 <ul className="members-voted">
+                    <span className="ok-this-day">Akinek jó: </span>
                     {members.map((member: string) => 
+                        <li className="voter" key={member}>{member}</li>
+                    )}
+                </ul>
+                <ul className="members-not-voted">
+                <span className="not-ok-this-day">Akinek nem jó: </span>
+                    {membersDidntVotedForThatDay.map((member: string) => 
                         <li className="voter" key={member}>{member}</li>
                     )}
                 </ul>

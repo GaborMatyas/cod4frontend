@@ -1,23 +1,29 @@
 .vote-item {
     background: $dark-gray-background;
     background: linear-gradient(90deg, $dark-gray-background 0%, $medium-gray-background 33%, $medium-gray-background 66%, $dark-gray-background 100%);
+    border-bottom: solid 1px $medium-gray-background;
     border: 2px solid $dark-gray-background;
     box-shadow: 0 1px 1px $medium-gray-background;
     display: flex;
+    height: calc(100% / 7);
     justify-content: center;
     width: 100%;
-    border-bottom: solid 1px $medium-gray-background;
+
+    &.winner {
+        .day {
+            color: $cod-green;
+        }
+
+        .calculated-votes {
+            color: $cod-green;
+        }
+    }
 
     .day-container {
         align-items: center;
-        // border: blue solid 1px;
         display: flex;
         justify-content: center;
         width: 10%;
-
-        .day.winner {
-            color: $cod-green;
-        }
     }
 
     .vote-container {
@@ -25,28 +31,38 @@
         flex-direction: column;
         min-width: 715;
         width: 90%;
-        // border: green solid 1px;
 
         .progress-wrapper {
             align-items: center;
             display: flex;
-            height: 35px;
             justify-content: center;
+            max-height: 25px;
 
             
             .votes-wrapper {
-                align-items: center;
-                display: flex;
-                justify-content: center;
+                text-align: center;
                 width: 20%;
-
-                .calculated-votes.winner {
-                    color: $cod-green;
-                }
             }
         }
 
         .members-voted {
+            display: flex;
+            margin: 5px auto;
+            width: 90%;
+
+            .voter {
+                display: inline;
+                list-style:none;
+                margin-right: 10px;
+                text-decoration: none;
+            }
+        }
+
+        .not-ok-this-day {
+            display: inline;
+        }
+
+        .members-not-voted {
             display: flex;
             margin: 5px auto;
             width: 90%;
