@@ -6,6 +6,8 @@ import VoteTable from '@components/vote-summary/vote-table/vote-table';
 import { fetchVotes } from '@store/votes/votes.slice';
 import { selectVoteState } from '@store/votes/votes.selectors';
 
+import './vote-summary.page.scss';
+
 const VoteSummary = () =>{
 
     const dispatch = useDispatch();
