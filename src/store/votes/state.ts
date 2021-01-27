@@ -1,6 +1,6 @@
-import { votes } from '../../components/vote-summary/types'
+import { Votes } from '@components/vote-summary/types'
 
-export const votesInitialState: votes = {
+export const votesInitialState: Votes = {
     votes: [
         {
             date: "H" ,
@@ -33,7 +33,7 @@ export const votesInitialState: votes = {
     ]   
 }
 
-export const fetchedVotes: votes  = {
+export const fetchedVotes: Votes  = {
     votes: [
         {
             date: "H" ,
@@ -86,8 +86,7 @@ export const fetchedVotes: votes  = {
                     "Mortimer",
                     "Ply",
                     "Gufi",
-                    "Melkor",
-                    "Covid19"
+                    "Teabor"
                 ]
         },
         {

@@ -2,10 +2,11 @@
 import { combineReducers, ThunkDispatch} from '@reduxjs/toolkit';
 
 import voteReducer from './votes/votes.slice';
+import authReducer from './auth/user.slice';
 
 const rootReducer = combineReducers({
     votes: voteReducer,
-    // auth: authReducer
+    auth: authReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
