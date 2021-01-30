@@ -1,55 +1,53 @@
 .vote-item {
     background: $dark-gray-background;
     background: linear-gradient(90deg, $dark-gray-background 0%, $medium-gray-background 33%, $medium-gray-background 66%, $dark-gray-background 100%);
-    border-bottom: solid 1px $medium-gray-background;
-    border: 2px solid $dark-gray-background;
-    box-shadow: 0 1px 1px $medium-gray-background;
+    border-bottom: solid 2px $soft-grey;
+    // border: 2px solid $dark-gray-background;
+    // box-shadow: 0 1px 1px $medium-gray-background;
     display: flex;
     height: calc(100% / 7);
     justify-content: center;
-    width: 100%;
-
-    &.winner {
-        .day {
-            color: $cod-green-medium;
-        }
-
-        .calculated-votes {
-            color: $cod-green-medium;
-        }
-    }
+    width: 95%;
 
     .day-container {
         align-items: center;
         display: flex;
         justify-content: center;
         width: 10%;
+
+        .day {
+            animation-fill-mode:forwards;   
+            animation:day 0.5s ease-out 0s;
+            color: $text-white;
+        }
+        
+        @keyframes day {
+        0% { opacity:0; transform:translateY(10px); }
+        100% { opacity:1; transform:translateY(0); }
+        }
     }
 
     .vote-container {
         display: flex;
         flex-direction: column;
-        min-width: 715;
-        width: 90%;
+        justify-content: center;
+        width: 80%;
 
         .progress-wrapper {
             align-items: center;
             display: flex;
             justify-content: center;
             max-height: 25px;
-
-            
-            .votes-wrapper {
-                text-align: center;
-                width: 20%;
-            }
         }
-
+        
         .members-voted {
             display: flex;
-            margin: 5px auto;
-            width: 90%;
-
+            margin: 5px auto 5px 5px;
+            width: 100%;
+            color: $text-white;
+            padding: 0;
+            font-size: 0.75rem;
+            
             .voter {
                 display: inline;
                 list-style:none;
@@ -57,22 +55,62 @@
                 text-decoration: none;
             }
         }
+        
+        
+        .members-not-voted {
+            display: none;
+            margin: 5px auto 5px 5px;
+            width: 100%;
+            padding: 0;
+            color: $text-white;
+            font-size: 0.75rem;
+            
+            .not-this-day-members {
+                display: inline;
 
-        .not-ok-this-day {
-            display: inline;
+            }
+            
+            .voter {
+                display: inline;
+                list-style:none;
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .votes-wrapper {
+        width: 10%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        .calculated-votes {
+            animation-fill-mode:forwards;   
+            animation:calculated-votes 0.5s ease-out 0s;
+            color: $text-white;
+        }
+        
+            @keyframes calculated-votes {
+            0% { opacity:0; transform:translateY(10px); }
+            100% { opacity:1; transform:translateY(0); }
+        }
+    }
+
+    &.winner {
+        .day {
+            color: $main-green;
+        }
+
+        .votes-wrapper {
+            .calculated-votes {
+                color: $main-green;
+            }
         }
 
         .members-not-voted {
             display: flex;
-            margin: 5px auto;
-            width: 90%;
-
-            .voter {
-                display: inline;
-                list-style:none;
-                margin-right: 10px;
-                text-decoration: none;
-            }
         }
+    
     }
 }

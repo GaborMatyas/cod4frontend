@@ -3,7 +3,7 @@ import React from 'react';
 import './header.scss';
 
 const Header = () =>(
-    <header>
+    <header id='page-header'>
         <div className="main-title"/>
     </header>
 )

@@ -7,52 +7,37 @@ $glow-width:60px;
 $glow-radius:10px;
 $glow-color:#04bfff;
 
-.progress-bar {
-  height:3px;
-  position:relative;
-  width:100%;
-  z-index:10;
-
-  background-color:$dark-gray-background;
+.progress-wrapper {
+  margin: 10px 0;
+  .progress-bar {
+    height:3px;
+    position:relative;
+    width:100%;
+    z-index:10;
   
-  .progress {
-    background-color:$light-grey;
-    border-radius: 0px 2px 2px 0px;
-    height:100%;
-    position:relative;
-    transition:width 0.5s ease-out;
-  }
-  .glow {
-    float:right;
-    height:100%;
-    max-width:100%;
-    width:10px;
-
-  }
-  .glow::before,
-  .glow::after {
-    border-radius:0px 2px 2px 0px;
-    content:'';
-    display:block;
-    position:relative;
-  }
-  .glow::before {
-    background:transparent;
-    box-shadow:0px 0px $glow-radius $bar-color, 0px 0px $glow-radius $glow-color;
-    height:100%;
-    z-index:-5;
-  }
-  .glow::after {
-    background:linear-gradient(to right, $background-color 0%, transparent 100%);
-    height:calc(100% + #{$glow-radius} + #{$glow-radius});
-    left:(-$glow-radius);
-    top:(-$glow-radius);
-    width:calc(100% + #{$glow-radius});
-    z-index:-3;
+    background-color:$dark-gray-background;
+    
+    .progress {
+      background-color:$light-grey;
+      border-radius: 0px 2px 2px 0px;
+      height:100%;
+      position:relative;
+      transition:width 0.5s ease-out;
+    }
   }
 }
 
-// messages 
+.vote-item.winner {
+  .progress-wrapper {
+    margin: 10px 0;
+    .progress-bar{
+      .progress {
+        background-color: $main-green;
+      }
+    }
+  }
+}
+
 .label {
   color:white;
   font-family:Poppins;
@@ -60,7 +45,6 @@ $glow-color:#04bfff;
   text-shadow:0px 0px 2px $bar-color;
 }
 
-// animations
 .fill {
   animation-fill-mode:forwards;    
   animation:fill-1 0.5s ease-out 0s;
@@ -70,26 +54,4 @@ $glow-color:#04bfff;
 @keyframes fill {
   0% { width:0%; }
   100% { width:70%; }
-}
-
-.day {
-  animation-fill-mode:forwards;   
-  animation:day 0.5s ease-out 0s;
-  opacity:0;
-}
-
-@keyframes day {
-  0% { opacity:0; transform:translateY(10px); }
-  100% { opacity:0.9; transform:translateY(0); }
-}
-
-.calculated-votes {
-  animation-fill-mode:forwards;   
-  animation:calculated-votes 0.5s ease-out 0s;
-  opacity:0;
-}
-
-@keyframes calculated-votes {
-  0% { opacity:0; transform:translateY(10px); }
-  100% { opacity:0.9; transform:translateY(0); }
 }

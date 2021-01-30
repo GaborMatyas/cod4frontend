@@ -20,25 +20,25 @@ const VoteItem = ({date, members, isWinner, progressBarSize, membersDidntVotedFo
             </div>
             <div className="vote-container">
                 <div className="progress-wrapper">
-                    <ProgressBar isWinner={isWinner} progressBarSize={progressBarSize}/>
-                    <div className="votes-wrapper">
-                        <span className="calculated-votes">
-                            {votes}
-                        </span>
-                    </div>
+                    <ProgressBar progressBarSize={progressBarSize}/>
                 </div>
                 <ul className="members-voted">
-                    <span className="ok-this-day">Akinek jó: </span>
+                    <span className="ok-this-day"></span>
                     {members.map((member: string) => 
                         <li className="voter" key={member}>{member}</li>
                     )}
                 </ul>
                 <ul className="members-not-voted">
-                <span className="not-ok-this-day">Akinek nem jó: </span>
-                    {membersDidntVotedForThatDay.map((member: string) => 
-                        <li className="voter" key={member}>{member}</li>
-                    )}
+                    <span className="not-this-day-members"></span>
+                        {membersDidntVotedForThatDay.map((member: string) => 
+                            <li className="voter" key={member}>{member}</li>
+                        )}
                 </ul>
+            </div>
+            <div className="votes-wrapper">
+                <span className="calculated-votes">
+                    {votes}
+                </span>
             </div>
         </div>
     )
