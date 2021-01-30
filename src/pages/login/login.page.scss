@@ -1,11 +1,14 @@
 .login-container {
-    height: 100%;
+    height: 100vh;
     width: 100%;
+    max-width: 375px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: rgb(24,27,43);
+    background: linear-gradient(28deg, rgba(24,27,43,1) 0%, rgba(78,83,107,1) 100%);
 
-    h1, label {
+    .title, label {
         color: $text-white;
     }
 
@@ -18,17 +21,27 @@
             height: 100px;
             margin: 30px auto;
         }
+
+        .title {
+            letter-spacing: 1px;
+        }
     }
 
     .login-form {
         display: flex;
         flex-direction: column;
-        margin: 90px auto 150px auto;
+        margin: 90px auto 50px auto;
         width: 80%;
+        box-sizing: content-box;
+
+        label {
+            padding-left: 5px;
+            letter-spacing: 1px;
+        }
         
         input {
             background: none;
-            border-color: $cod-green;
+            border-color: $cod-green-medium;
             border-width: 0 0 2px;
             box-sizing: border-box;
             margin-bottom: 35px;
@@ -36,6 +49,8 @@
             outline: none;
             padding-bottom: 8px;
             width: 100%;
+            padding-left: 0;
+            letter-spacing: 1px;
             
             &::placeholder {
                 color: $light-grey;
@@ -48,6 +63,37 @@
         
         input:focus {
             border-color: $light-grey;
+        }
+
+    }
+
+    .login-button {
+        background: rgb(145,170,152);
+        background: linear-gradient(220deg, rgba(145,170,152,1) 0%, rgba(46,187,84,1) 100%);
+        box-shadow: 0px 36px 51px -3px rgba(46,187,84,0.36);
+        border-radius: 15px;
+        border: none;
+        color: $text-white;
+        font-weight: 700;
+        margin-bottom: 65px;
+        padding: 20px 70px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 0.875rem;
+    }
+    
+    .sign-up {
+        width: 80%;
+        .question {
+            color: $text-white;
+            display: block;
+        }
+
+        .registration {
+            padding: 15px 15px 15px 0px;
+            border: none;
+            background: none;
+            color: $text-white;
         }
     }
 }
