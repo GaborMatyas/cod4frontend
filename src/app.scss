@@ -1,9 +1,18 @@
-#root {
-    align-items: center;
-    background-color: $dark-gray-background;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    height: 100%;
-    width: 100%;
+body {
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+    font-family: 'Poppins', sans-serif;
+
+    margin: 0;
+    
+    #root {
+        align-items: center;
+        background-color: $dark-gray-background;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+    }
 }
+
