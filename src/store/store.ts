@@ -1,8 +1,9 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-import rootReducer from './root.reducer'
-import { Middleware } from 'redux';
+import { useDispatch } from 'react-redux'
 import { createLogger } from 'redux-logger';
+import { Middleware } from 'redux';
 
+import rootReducer from './root.reducer'
 
 const middlewares: Array<Middleware> = [...getDefaultMiddleware()];
 
@@ -16,3 +17,6 @@ export default configureStore({
   reducer: rootReducer,
   middleware: middlewares
 });
+
+// export type AppDispatch = typeof store.dispatch
+// export const useAppDispatch = () => useDispatch<AppDispatch>()

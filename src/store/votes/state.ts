@@ -1,6 +1,12 @@
-import { Votes } from '@components/vote-summary/types'
+import { Vote, Votes } from '@components/vote-summary/types'
 
-export const votesInitialState: Votes = {
+export interface votesInitialStateInterface {
+    status: string;
+    votes: Array<Vote>;
+}
+
+export const votesInitialState: votesInitialStateInterface = {
+    status: 'idle',
     votes: [
         {
             date: "H" ,
