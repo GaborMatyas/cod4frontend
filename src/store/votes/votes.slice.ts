@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Votes } from '@components/vote-summary/types'
+import { Votes, Vote } from '@components/vote-summary/types'
 import { votesInitialState, votesInitialStateInterface, fetchedVotes } from './state';
 import { fetchVotesThunk } from '@store/votes/votes.thunk';
 
@@ -16,8 +16,9 @@ const votesSlice = createSlice({
         }
     },
     extraReducers: {
-        [fetchVotesThunk.fulfilled]: (state, {payload}) => {
-            state.votes=payload;
+        [fetchVotesThunk.fulfilled.type]: (state, action: PayloadAction<Array<Vote>>) => {
+            state.votes=action.payload;
+            state.status='fetched';
         }
     }
 });

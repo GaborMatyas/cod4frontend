@@ -1,12 +1,12 @@
 import { Vote, Votes } from '@components/vote-summary/types'
 
 export interface votesInitialStateInterface {
-    status: string;
+    status: 'loading' | 'failed' | 'fetched' | 'fetch';
     votes: Array<Vote>;
 }
 
 export const votesInitialState: votesInitialStateInterface = {
-    status: 'idle',
+    status: 'fetch',
     votes: [
         {
             date: "H" ,
