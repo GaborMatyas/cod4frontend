@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { User } from './constants'
-import { userInitialState, fetchedUserData } from './state';
+import { userInitialState } from './state';
 
 const userSlice = createSlice({
     name: 'auth',
     initialState: userInitialState,
     reducers: {
         login: (state, {payload}: PayloadAction<User>) => {
-            state.id = fetchedUserData.id;
-            state.nickName = fetchedUserData.nickName;
+            state.id = payload.id;
+            state.nickName = payload.nickName;
         }
     }
 });
