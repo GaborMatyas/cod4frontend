@@ -1,3 +1,7 @@
+$vote-container-width: 70%;
+$smaller-items-width: 15%;
+$avatar-diameter: 25px;
+
 .vote-item {
     background: $dark-gray-background;
     background: linear-gradient(90deg, $dark-gray-background 0%, $medium-gray-background 33%, $medium-gray-background 66%, $dark-gray-background 100%);
@@ -13,7 +17,7 @@
         align-items: center;
         display: flex;
         justify-content: center;
-        width: 10%;
+        width: $smaller-items-width;
 
         .day {
             animation-fill-mode:forwards;   
@@ -31,7 +35,12 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 80%;
+        width: $vote-container-width;
+
+        input[type='checkbox'] {
+            align-self: center;
+            transform: scale(2)
+        }
 
         .progress-wrapper {
             align-items: center;
@@ -42,7 +51,7 @@
         
         .members-voted {
             display: flex;
-            margin: 5px auto 5px 5px;
+            margin: 0 auto 0 0;
             width: 100%;
             color: $text-white;
             padding: 0;
@@ -51,15 +60,22 @@
             .voter {
                 display: inline;
                 list-style:none;
-                margin-right: 10px;
+                margin-right: -2px;
                 text-decoration: none;
+                height: $avatar-diameter;
+                width: $avatar-diameter;
+
+                .avatar {
+                    height: $avatar-diameter;
+                    border-radius: 50px;
+                    background-blend-mode: luminosity;
+                }
             }
         }
         
-        
         .members-not-voted {
             display: none;
-            margin: 5px auto 5px 5px;
+            margin: 5px auto 5px 0;
             width: 100%;
             padding: 0;
             color: $text-white;
@@ -79,7 +95,7 @@
     }
 
     .votes-wrapper {
-        width: 10%;
+        width: $smaller-items-width;
         height: 100%;
         display: flex;
         align-items: center;
@@ -89,11 +105,22 @@
             animation-fill-mode:forwards;   
             animation:calculated-votes 0.5s ease-out 0s;
             color: $text-white;
+            position: relative;
         }
         
             @keyframes calculated-votes {
             0% { opacity:0; transform:translateY(10px); }
             100% { opacity:1; transform:translateY(0); }
+        }
+
+        svg {
+            position: absolute;
+            top: -5px;
+            height: 25px;
+            max-width: 20px;
+            fill: $text-white;;
+            margin-left: 3px;
+        
         }
     }
 
@@ -105,6 +132,9 @@
         .votes-wrapper {
             .calculated-votes {
                 color: $main-green;
+            }
+            svg {
+                fill: $main-green;
             }
         }
 

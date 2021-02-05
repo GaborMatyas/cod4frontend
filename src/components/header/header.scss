@@ -4,13 +4,47 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+
+    .user-container {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 115px;
+
+        .avatar {
+            background-size: contain;
+            height: 80px;
+            border-radius: 50px;
+            width: 80px;
+            margin-bottom: 10px;
+            background-blend-mode: luminosity;
+        }
+        
+        .username {
+            // display: none;
+            color: $text-white;
+            font-size: 1.1rem;
+        }
+    }
     
     .main-title {
         background: url('../../assets/img/4-43271_render-cod4-call-of-duty-4.png') center center no-repeat;
         background-size: contain;
-        width: 80%;
+        display: none;
         height: 150px;
+        width: 80%;
+
     }
-    
+
+    svg {
+        fill: $text-white;
+        height: 35px;
+        left: 10px;
+        position: absolute;
+        top: 10px;
+    }
 }
-    
