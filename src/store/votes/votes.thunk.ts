@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { fetchCurrentVotesURL } from './constants';
-
 import { Vote } from '../../components/vote-summary/types'
 
 export const fetchVotes = async(url: string): Promise<Array<Vote>> => {
@@ -16,9 +15,9 @@ export const fetchVotes = async(url: string): Promise<Array<Vote>> => {
 };
 
 export const fetchVotesThunk = createAsyncThunk(
-  'votes/fetchVotes', 
-  async (url, {getState}) => {
-    const response = await fetchVotes(fetchCurrentVotesURL)
-    console.log('res',response);
-    return (await response) as Vote[];
-});
+    'votes/fetchVotes', 
+    async (url, {getState}) => {
+        const response = await fetchVotes(fetchCurrentVotesURL)
+        return (await response) as Vote[];
+    }
+);
