@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
+import { selectUserName } from '@store/auth/user.selectors';
 import Button from '@components/common/button/button';
 import VoteItem from '@components/vote-summary/vote-item/vote-item';
+import { calculateProgressBar, calculateWinner, whichMembersVoted } from './vote-table.utils';
 import { Vote  } from '@components/vote-summary/types';
 
 import './vote-table.scss';
@@ -10,31 +13,14 @@ interface VoteContainerProps {
     votes: Array<Vote>
 }
 
-const calculateWinner = (votesArray: Array<Vote>) => {
-    const lengths = votesArray.map((vote) => vote.members.length);
-    return Math.max(...lengths);
-}
-
-const whichMembersVoted = (votesArray: Array<Vote>): Array<string> => {
-    const allVoter = votesArray.map(vote => vote.members);
-    const set = new Set([].concat.apply([], allVoter));
-    return Array.from(set) as Array<string>;
-}
-
-const calculateProgressBar = (mostVotes: number, currentVotes: number) => {
-    return parseFloat((currentVotes/mostVotes).toFixed(2))*100;
-}
-
-const whichMembersDidntVotedForThatDay = (allMembersWhoVotedThisWeek: Array<string>, thisDayIsOkForTheseMembers: Array<string>) => (
-        allMembersWhoVotedThisWeek.filter(member => !thisDayIsOkForTheseMembers.includes(member)));
-
 const VoteTable = (votes: VoteContainerProps): JSX.Element => {
     const mostVotes = calculateWinner(votes.votes);
     const membersVoted = whichMembersVoted(votes.votes);
-    
+    const [isCheckboxVisible, setCheckboxVisibility] = useState<boolean>(true);
+    const currentUserName = useSelector(selectUserName);
     const voteItems = votes.votes.map((vote: Vote) => {
-        const membersDidntVotedForThatDay = whichMembersDidntVotedForThatDay(membersVoted, vote.members);
-        console.log(membersDidntVotedForThatDay);
+        // const membersDidntVotedForThatDay = whichMembersDidntVotedForThatDay(membersVoted, vote);
+        // console.log('membersDidntVotedForThatDay',membersDidntVotedForThatDay);
         const isWinner: boolean = mostVotes===vote.members.length;
         const progressBarSize = calculateProgressBar(membersVoted.length, vote.members.length);
         return(
@@ -43,12 +29,13 @@ const VoteTable = (votes: VoteContainerProps): JSX.Element => {
                 date={vote.date} 
                 members={vote.members}
                 isWinner={isWinner}
-                progressBarSize={progressBarSize} 
-                membersDidntVotedForThatDay={membersDidntVotedForThatDay}/> );
+                progressBarSize={progressBarSize}
+                isCheckboxVisible={isCheckboxVisible} 
+                currentUserName={currentUserName}/> );
     });
     
     return(
-            <>
+        <>
             <div className="vote-table">
                 {voteItems}
             </div>
