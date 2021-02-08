@@ -12,11 +12,17 @@
         "@app/*": [
             "./*"
         ],
+        "@assets/*": [
+            "assets/*"
+        ],
+        "@components/*": [
+            "components/*"
+        ],
         "@pages/*": [
             "pages/*"
         ],
-        "@assets/*": [
-            "assets/*"
+        "@router/*": [
+            "router/*"
         ],
         "@store/*": [
             "store/*"
@@ -24,8 +30,8 @@
         "@tests/*": [
             "tests/*"
         ],
-        "@components/*": [
-            "components/*"
+        "@hooks/*": [
+            "hooks/*"
         ]
       },
       "preserveConstEnums": true,

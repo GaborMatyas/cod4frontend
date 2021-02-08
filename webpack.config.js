@@ -43,6 +43,13 @@ module.exports = {
           }
         ]
       },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader', options: { sourceMap: true } },
+        ]
+      },
       {    
         test: /\.(woff|woff2|png|otf)$/,
         loader: "file-loader"
@@ -52,6 +59,9 @@ module.exports = {
         use: ['@svgr/webpack'],
       }
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
