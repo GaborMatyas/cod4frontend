@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectUserName } from '@store/auth/user.selectors';
-import Button from '@components/common/button/button';
+import { selectUserName } from '@app/store/auth/auth.selectors';
 import VoteItem from '@components/vote-summary/vote-item/vote-item';
 import { calculateProgressBar, calculateWinner, whichMembersVoted } from './vote-table.utils';
 import { Vote  } from '@components/vote-summary/types';
@@ -39,7 +38,7 @@ const VoteTable = (votes: VoteContainerProps): JSX.Element => {
             <div className="vote-table">
                 {voteItems}
             </div>
-            <Button className='vote-button' text="Szavazok" handleClick={()=>(console.log('x'))}  />
+            <button className='vote-button' onClick={()=>(console.log('x'))} > Szavazok</button>
         </>
     ) 
 } 

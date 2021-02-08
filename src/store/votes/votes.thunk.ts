@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchCurrentVotesURL } from './constants';
 import { Vote } from '../../components/vote-summary/types'
 
-export const fetchVotes = async(url: string): Promise<Array<Vote>> => {
+const fetchVotes = async(url: string): Promise<Array<Vote>> => {
     try {
         const response = await fetch(url);
         const json = await response.json();

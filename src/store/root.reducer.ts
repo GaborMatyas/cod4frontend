@@ -1,8 +1,7 @@
-// import { connectRouter } from 'connected-react-router';
-import { combineReducers, ThunkDispatch} from '@reduxjs/toolkit';
+import { combineReducers } from '@reduxjs/toolkit';
 
 import voteReducer from './votes/votes.slice';
-import authReducer from './auth/user.slice';
+import authReducer from './auth/auth.slice';
 
 const rootReducer = combineReducers({
     votes: voteReducer,
