@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import Avatar from '@components/common/avatar/avatar';
-import { selectUserState } from '@store/auth/user.selectors';
+import { selectUserState } from '@app/store/auth/auth.selectors';
 import LogoutIcon from '@assets/img/logout.svg';
 
 import './header.scss';

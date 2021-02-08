@@ -14,3 +14,8 @@ export const selectUserAvatarURL = createSelector(
     selectUserState,
     state => state.avatarURL
 );
+
+export const isUserLoggedIn = createSelector(
+    selectUserState,
+    state => state.token
+)

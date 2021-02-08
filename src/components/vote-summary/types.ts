@@ -10,3 +10,11 @@ export interface UserWithAvatar {
 export interface Votes {
     votes: Array<Vote>;
 }
+
+export type Token = string; 
+
+export interface UserCridentials {
+    email: string;
+    password: string;
+    route: string;
+}
