@@ -1,0 +1,37 @@
+.login-button,
+.vote-button {
+  background: rgb(145, 170, 152);
+  background: linear-gradient(
+    220deg,
+    rgba(145, 170, 152, 1) 0%,
+    rgba(46, 187, 84, 1) 100%
+  );
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0px 36px 51px -3px rgba(46, 187, 84, 0.36);
+  box-sizing: content-box;
+  color: $text-white;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  max-width: 240px;
+  padding: 20px 70px;
+  text-transform: uppercase;
+  transition: all 0.5s ease-in-out;
+}
+
+.login-button:hover,
+.vote-button:hover {
+  background: $cod-green-lightest;
+  color: $dark-gray-background;
+  transition: all 400ms ease;
+}
+
+.login-button:disabled,
+.vote-button:disabled {
+  background: $cod-grey;
+  box-shadow: none;
+  color: $soft-grey;
+  transition: all 400ms ease;
+}

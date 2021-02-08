@@ -1,0 +1,12 @@
+p.error-message {
+  color: $error-red;
+  // margin-top: 5px;
+  position: absolute;
+  top: calc(100% - 10px);
+
+  &::before {
+    display: inline;
+    content: "⚠  ";
+    white-space: pre;
+  }
+}
