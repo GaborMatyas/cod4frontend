@@ -32,59 +32,59 @@
     }
   }
 
-  .register-form {
-    display: flex;
-    flex-direction: column;
-    margin: 90px auto 50px auto;
-    width: 80%;
-    box-sizing: content-box;
+  // .register-form {
+  //   display: flex;
+  //   flex-direction: column;
+  //   margin: 90px auto 50px auto;
+  //   width: 80%;
+  //   box-sizing: content-box;
 
-    .input-group {
-      margin-top: 0;
-      margin-bottom: 35px;
+  //   .input-group {
+  //     margin-top: 0;
+  //     margin-bottom: 35px;
 
-      label {
-        padding-left: 5px;
-        letter-spacing: 1px;
-      }
+  //     label {
+  //       padding-left: 5px;
+  //       letter-spacing: 1px;
+  //     }
 
-      input {
-        background: none;
-        border-color: $light-grey$cod-green-medium;
-        border-width: 0 0 2px;
-        box-sizing: border-box;
-        color: $text-white;
-        margin-top: 15px;
-        margin-bottom: 5px;
-        outline: none;
-        padding-bottom: 8px;
-        width: 100%;
-        padding-left: 0;
-        letter-spacing: 1px;
+  //     input {
+  //       background: none;
+  //       border-color: $light-grey$cod-green-medium;
+  //       border-width: 0 0 2px;
+  //       box-sizing: border-box;
+  //       color: $text-white;
+  //       margin-top: 15px;
+  //       margin-bottom: 5px;
+  //       outline: none;
+  //       padding-bottom: 8px;
+  //       width: 100%;
+  //       padding-left: 0;
+  //       letter-spacing: 1px;
 
-        &::placeholder {
-          color: $light-grey;
-        }
+  //       &::placeholder {
+  //         color: $light-grey;
+  //       }
 
-        &:focus {
-          border-color: $main-green;
-        }
-      }
-    }
-  }
+  //       &:focus {
+  //         border-color: $main-green;
+  //       }
+  //     }
+  //   }
+  // }
 
-  .login-button {
-    margin-bottom: 65px;
-  }
+  // .login-button {
+  //   margin-bottom: 65px;
+  // }
 
-  .sign-up {
+  .change-page {
     width: 80%;
     .question {
       color: $light-grey;
       display: block;
     }
 
-    .registration {
+    button {
       padding: 15px 15px 15px 0px;
       border: none;
       background: none;

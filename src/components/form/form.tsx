@@ -1,48 +1,53 @@
-import React, { useState } from 'react';
-import { useForm } from "react-hook-form";
+import React, { FormEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-import ErrorMessage from './error-message';
+import ErrorMessage from './form-error-message';
+import { sendUserCredentialsThunk } from '@store/auth/auth.thunks';
 import SubmitButton from '@app/components/common/button/submit-button';
-import { nameValidation, passwordValidation } from './form.utils';
+import { validation } from './form.utils';
+import { maxStringLength, minNameLength, minPasswordLength } from './constants';
+import { routeForLogin, routeForRegistration } from '@store/auth/constants';
+
+import './form.scss'
 
 interface FormProps {
     classNameString: string;
-    onSubmit: any;
     username: string;
     setUsername: Function;
     password: string;
     setPassword: Function;
 }
 
-type FormData = {
-    username: string;
-    password: string;
+const Form = ({ classNameString, username, setUsername, password, setPassword }: FormProps): JSX.Element => {
+    const nameValidationErrors = validation(username, minNameLength, maxStringLength);
+    const passwordValidationErrors = validation(password, minPasswordLength, maxStringLength);
 
-};
-
-const Form = ({ classNameString, onSubmit, username, setUsername, password, setPassword }: FormProps): JSX.Element => {
-    const nameValidationErrors = nameValidation(username);
-    const passwordValidationErrors = passwordValidation(password);
     const formIsValid = nameValidationErrors.length === 0 && passwordValidationErrors.length === 0;
+    const url = (classNameString === 'login-form') ? routeForLogin : routeForRegistration;
+
     const [nameTouched, setNameTouched] = useState(false);
     const [passwordTouched, setPasswordTouched] = useState(false);
 
-    const handleNameChange = (value: string) => {
-        if (!nameTouched) {
-            setNameTouched(true);
-        }
-        setUsername(value);
-    }
+    const dispatch = useDispatch();
 
-    const handlePasswordChange = (value: string) => {
-        if (!passwordTouched) {
-            setPasswordTouched(true);
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>, username: string, password: string, routeForRegistration: string) => {
+        e.preventDefault();
+        dispatch(sendUserCredentialsThunk({
+            email: username,
+            password,
+            route: url
+        }));
+    };
+
+    const handleChange = (value: string, isTouched: boolean, setTouched: Function, setData: Function) => {
+        if (!isTouched) {
+            setTouched(true);
         }
-        setPassword(value);
+        setData(value);
     }
 
     return (
-        <form className={classNameString} onSubmit={onSubmit}>
+        <form className={`form ${classNameString}`} onSubmit={(e) => handleSubmit(e, username, password, routeForLogin)}>
 
             <div className="input-group">
                 <label htmlFor="username">Felhasználónév</label>
@@ -51,8 +56,12 @@ const Form = ({ classNameString, onSubmit, username, setUsername, password, setP
                     name="username"
                     placeholder="Mi a neved a harcmezőn?"
                     value={username}
-                    onChange={e => { handleNameChange(e.target.value) }} />
-                {(classNameString === 'login-form' && nameTouched) ? <ErrorMessage fieldName='username' errors={nameValidationErrors} /> : null}
+                    onChange={e => { handleChange(e.target.value, nameTouched, setNameTouched, setUsername) }} />
+                {
+                    (classNameString === 'login-form' && nameTouched) ?
+                        <ErrorMessage errors={nameValidationErrors} minStringLength={minNameLength} maxStringLength={maxStringLength} /> :
+                        null
+                }
             </div>
 
             <div className="input-group">
@@ -62,11 +71,15 @@ const Form = ({ classNameString, onSubmit, username, setUsername, password, setP
                     name="password"
                     placeholder="Add meg a jelszavad"
                     value={password}
-                    onChange={e => handlePasswordChange(e.target.value)} />
-                {(classNameString === 'login-form' && passwordTouched) ? <ErrorMessage fieldName='password' errors={passwordValidationErrors} /> : null}
+                    onChange={e => { handleChange(e.target.value, passwordTouched, setPasswordTouched, setPassword) }} />
+                {
+                    (classNameString === 'login-form' && passwordTouched) ?
+                        <ErrorMessage errors={passwordValidationErrors} minStringLength={minPasswordLength} maxStringLength={maxStringLength} /> :
+                        null
+                }
             </div>
 
-            <SubmitButton className='login-button' text="Bejelentkezés" disabled={!formIsValid} />
+            <SubmitButton className={`${classNameString} submit-button`} text="Bejelentkezés" disabled={!formIsValid} />
         </form>
     )
 };

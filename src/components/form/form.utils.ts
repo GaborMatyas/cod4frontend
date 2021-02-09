@@ -1,34 +1,21 @@
-export const nameValidation = (username: string) => {
-    const errors: Array<string> = [];
-    if (username.trim() === '') {
-        errors.push('required');
-    }
-    if (username.trim().length < 3) {
-        errors.push('minLength');
-    }
-    if (username.trim().length > 20) {
-        errors.push('maxLength');
-    }
-    if (!(/^[a-zA-Z0-9_]+$/.test(username.trim()))) {
-        console.log( 'regex test', /^[a-zA-Z0-9_]+$/.test(username.trim()));
-        errors.push('pattern');
-    }
-    return errors;
-}
+import { ValidationRequirementsEnum } from './constants';
 
-export const passwordValidation = (username: string) => {
+export const validation = (value: string, minLength: number, maxLength: number) => {
     const errors: Array<string> = [];
-    if (username.trim() === '') {
-        errors.push('required');
+    if (value.trim() === '') {
+        errors.push(ValidationRequirementsEnum.REQUIRED);
     }
-    if (username.trim().length < 8) {
-        errors.push('minLength');
+    if (value.trim().length < minLength) {
+        errors.push(ValidationRequirementsEnum.MIN_LENGTH);
     }
-    if (username.trim().length > 20) {
-        errors.push('maxLength');
+    if (value.trim().length > maxLength) {
+        errors.push(ValidationRequirementsEnum.MAX_LENGTH);
     }
-    if (!(/^[a-zA-Z0-9_]+$/.test(username.trim()))) {
-        errors.push('pattern');
-    }
+    //TODO: use the commented code once the username will be used for login
+    //instead of the email address
+
+    // if (!(/^[a-zA-Z0-9_]+$/.test(value.trim()))) {
+    //     errors.push(ValidationRequirementsEnum.PATTERN);
+    // }
     return errors;
 }
