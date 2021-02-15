@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Form from '@components/form/form';
 import { ROUTE_PATHS } from '@router/routes';
+import { FormTypes } from '@components/form/constants';
 
 import './login.page.scss';
 
@@ -18,7 +19,7 @@ const LoginPage = () => {
             </div>
 
             <Form
-                classNameString="login-form"
+                classNameString={FormTypes.LOGIN_PAGE}
                 username={email}
                 setUsername={setUsername}
                 password={password}

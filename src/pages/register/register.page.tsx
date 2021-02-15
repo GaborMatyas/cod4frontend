@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Form from '@components/form/form';
 import { ROUTE_PATHS } from '@router/routes';
+import { FormTypes } from '@components/form/constants';
 
 import './register.page.scss';
 
@@ -18,7 +19,7 @@ const RegisterPage = () => {
             </div>
 
             <Form
-                classNameString="register-form"
+                classNameString={FormTypes.REGISTER_PAGE}
                 username={email}
                 setUsername={setUsername}
                 password={password}

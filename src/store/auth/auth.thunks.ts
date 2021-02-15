@@ -1,14 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-import { routeForLogin, routeForRegistration } from './constants';
 import { setAuthTokenState } from '@store/auth/auth.slice';
 import { Token, UserCridentials } from '@components/vote-summary/types';
-
-const notify = () => toast.error("Nem létező belépési adatokat adtál meg!", {
-  position: toast.POSITION.TOP_RIGHT,
-  autoClose: 8000
-});
+import { showErrorToastMessage } from '@components/toast-message/toast-message';
 
 export const sendUserCredentials = async (credentials: UserCridentials) => {
     return fetch(credentials.route, {
@@ -20,7 +15,7 @@ export const sendUserCredentials = async (credentials: UserCridentials) => {
     })
       .then(data => {
         if (data.status===401 || data.status===400) {
-          notify();
+          showErrorToastMessage('Nem létező belépési adatokat adtál meg!', toast.POSITION.TOP_RIGHT);
         }
         return data.json();
       })
