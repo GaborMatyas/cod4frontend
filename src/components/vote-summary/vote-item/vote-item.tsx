@@ -10,7 +10,7 @@ import { togglehUserVoteWithCheckbox } from '@store/votes/votes.slice';
 import './vote-item.scss'
 interface VoteItemProps {
     date: string,
-    members: Array<UserWithAvatar>,
+    membersVotedForThisDay: Array<UserWithAvatar>,
     isWinner: boolean,
     progressBarSize: number,
     isCheckboxVisible: boolean
@@ -19,34 +19,34 @@ interface VoteItemProps {
 }
 
 const getCheckboxValue = (
-    currentUserName: string, 
+    currentUserName: string,
     membersOnThatDay: Array<UserWithAvatar>)
     : boolean => {
-        console.log(membersOnThatDay);
-        const isLogedInUserIncluded = membersOnThatDay.filter(member => (
-            member.username===currentUserName
-        ));
+    const isLogedInUserIncluded = membersOnThatDay.filter(member => (
+        member.username === currentUserName
+    ));
     return isLogedInUserIncluded.length > 0;
 }
 
-const VoteItem = ({date, members, isWinner, progressBarSize, isCheckboxVisible, currentUserName}: VoteItemProps ): JSX.Element => {
-    const isChecked = getCheckboxValue(currentUserName, members);
-    const votes = members.length;
+const VoteItem = ({ date, membersVotedForThisDay, isWinner, progressBarSize, isCheckboxVisible, currentUserName }: VoteItemProps): JSX.Element => {
+    const isChecked = getCheckboxValue(currentUserName, membersVotedForThisDay);
+    const votes = membersVotedForThisDay.length;
     const dispatch = useDispatch();
     const avatarURL = useSelector(selectUserAvatarURL);
-    const voteContainer = 
+    const voteContainer =
         <>
             <div className="progress-wrapper">
-                <ProgressBar progressBarSize={progressBarSize}/>
+                <ProgressBar progressBarSize={progressBarSize} />
             </div>
             <ul className="members-voted">
-                {members.map((member: UserWithAvatar, index: number) => 
+                {membersVotedForThisDay.map((member: UserWithAvatar, index: number) =>
                     <li className="voter" key={index}>
-                        <div 
-                            className="avatar" 
-                            style={{background: `rgba(8, 97, 44, 0.2) url(${member.avatarURL}) center center no-repeat`, 
-                            backgroundSize: 'contain' 
-                        }}/>
+                        <div
+                            className="avatar"
+                            style={{
+                                background: `rgba(8, 97, 44, 0.2) url(${member.avatarURL}) center center no-repeat`,
+                                backgroundSize: 'contain'
+                            }} />
                     </li>
                 )}
             </ul>
@@ -58,15 +58,16 @@ const VoteItem = ({date, members, isWinner, progressBarSize, isCheckboxVisible, 
             </ul> */}
         </>
 
-    const checkbox = 
+    const checkbox =
         <input
             name="day-checkbox"
             type="checkbox"
             checked={isChecked}
-            onChange={()=>dispatch(togglehUserVoteWithCheckbox({
-                currentUserName, 
-                date, 
-                avatarURL} ))} />
+            onChange={() => dispatch(togglehUserVoteWithCheckbox({
+                currentUserName,
+                date,
+                avatarURL
+            }))} />
 
     return (
         <div className={`vote-item ${isWinner ? "winner" : ""}`}>
@@ -79,7 +80,7 @@ const VoteItem = ({date, members, isWinner, progressBarSize, isCheckboxVisible, 
             <div className="votes-wrapper">
                 <span className="calculated-votes">
                     {votes}
-                    <SoldierIcon/>
+                    <SoldierIcon />
                 </span>
             </div>
         </div>

@@ -2,38 +2,40 @@ import { Vote } from '@components/vote-summary/types'
 export interface votesInitialStateInterface {
     status: 'loading' | 'failed' | 'fetched' | 'fetch';
     votes: Array<Vote>;
+    voteSnapshotToVerifyChanges: Array<Array<string>> | null;
 }
 
 export const votesInitialState: votesInitialStateInterface = {
     status: 'fetch',
     votes: [
         {
-            date: "H" ,
+            date: 'H' ,
             members: []
         },
         {
-            date: "K" ,
+            date: 'K' ,
             members: []
         },
         {
-            date: "Sze",
+            date: 'Sze',
             members: []
         },
         {
-            date: "CS",
+            date: 'CS',
             members: []
         },
         {
-            date: "P",
+            date: 'P',
             members: []
         },
         {
-            date:  "Szo",
+            date:  'Szo',
             members: []
         },
         {
-            date: "V",
+            date: 'V',
             members: []
         }
-    ]   
+    ],
+    voteSnapshotToVerifyChanges: null  
 }

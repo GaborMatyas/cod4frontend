@@ -14,3 +14,8 @@ export const selectVotesArray = createSelector(
     selectVoteState,
     state => state.votes
 );
+
+export const selectVotesSnapshot = createSelector(
+    selectVoteState,
+    state => state.voteSnapshotToVerifyChanges
+);

@@ -7,7 +7,7 @@ export const fetchVotes = async(url: string): Promise<Array<Vote>> => {
         const json = await response.json();
         return([...json.votes]);
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw new Error(error);
     }    
 }

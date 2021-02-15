@@ -2,7 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Vote } from '@components/vote-summary/types'
 import { votesInitialState } from './state';
-import { fetchVotesThunk } from '@store/votes/votes.thunk';
+import { toast } from 'react-toastify';
+import { showErrorToastMessage } from '@components/toast-message/toast-message';
+import { fetchVotesThunk, sendVotesThunk } from '@store/votes/votes.thunk';
 
 interface UserAndDate {
     currentUserName: string;
@@ -26,8 +28,8 @@ const votesSlice = createSlice({
                 }
             });
         },
-        fetchVotesFailed: (state, {payload}: PayloadAction<string>) => {
-            state.status = 'failed';
+        setSnapshot: (state, {payload}: PayloadAction<Array<Array<string>>>) => {
+            state.voteSnapshotToVerifyChanges = payload;
         }
     },
     extraReducers: {
@@ -40,13 +42,21 @@ const votesSlice = createSlice({
         },
         [fetchVotesThunk.rejected.type]: (state) => {
             state.status='failed';
-        }
+        },
+        [sendVotesThunk.fulfilled.type]: (state, action: PayloadAction<Array<Vote>> ) => {
+            state.votes=action.payload;;
+            state.status='fetched';
+        },
+        [sendVotesThunk.rejected.type]: (state) => {
+            showErrorToastMessage('Hiba, ellenőrizd az elérési utat és hogy a szerver elérhető e!', toast.POSITION.TOP_RIGHT);
+            state.status='failed';
+        },
     }
 });
 
 export const {
     togglehUserVoteWithCheckbox,
-    fetchVotesFailed
+    setSnapshot
 } = votesSlice.actions;
 
 export default votesSlice.reducer;
