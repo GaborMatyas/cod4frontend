@@ -20,7 +20,6 @@ export const App = () => {
     if (storedTokenInRedux) {
       setToken(storedTokenInRedux);
     }
-    console.log(!!storedTokenInRedux);
   }, [storedTokenInRedux])
 
   return (
