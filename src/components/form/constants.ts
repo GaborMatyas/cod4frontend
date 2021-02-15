@@ -8,3 +8,8 @@ export enum ValidationRequirementsEnum {
     MAX_LENGTH = 'maxLength',
     PATTERN = 'pattern'
 };
+
+export enum FormTypes {
+    LOGIN_PAGE = 'login-form',
+    REGISTER_PAGE = 'register-form'
+}

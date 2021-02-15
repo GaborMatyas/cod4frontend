@@ -24,7 +24,7 @@ const ErrorMeassage = ({ errors, minStringLength, maxStringLength }: ErrorMessag
             case ValidationRequirementsEnum.MAX_LENGTH:
                 return spanElement(`Max ${maxStringLength} karakternek kell lennie`);
             case ValidationRequirementsEnum.PATTERN:
-                return spanElement('Csak számokat, ékezet nélküli kis- és nagybetűk és alulvonást használhatsz');
+                return spanElement('Csak számokat, ékezet nélküli kis- és nagybetűket és alulvonást használhatsz');
             default:
                 return null;
         }

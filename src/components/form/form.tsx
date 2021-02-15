@@ -5,7 +5,7 @@ import ErrorMessage from './form-error-message';
 import { sendUserCredentialsThunk } from '@store/auth/auth.thunks';
 import SubmitButton from '@app/components/common/button/submit-button';
 import { validation } from './form.utils';
-import { maxStringLength, minNameLength, minPasswordLength } from './constants';
+import { maxStringLength, minNameLength, minPasswordLength, FormTypes } from './constants';
 import { routeForLogin, routeForRegistration } from '@store/auth/constants';
 
 import './form.scss'
@@ -23,14 +23,14 @@ const Form = ({ classNameString, username, setUsername, password, setPassword }:
     const passwordValidationErrors = validation(password, minPasswordLength, maxStringLength);
 
     const formIsValid = nameValidationErrors.length === 0 && passwordValidationErrors.length === 0;
-    const url = (classNameString === 'login-form') ? routeForLogin : routeForRegistration;
+    const url = (classNameString === FormTypes.LOGIN_PAGE) ? routeForLogin : routeForRegistration;
 
     const [nameTouched, setNameTouched] = useState(false);
     const [passwordTouched, setPasswordTouched] = useState(false);
 
     const dispatch = useDispatch();
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>, username: string, password: string, routeForRegistration: string) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>, username: string, password: string, url: string) => {
         e.preventDefault();
         dispatch(sendUserCredentialsThunk({
             email: username,
@@ -47,7 +47,7 @@ const Form = ({ classNameString, username, setUsername, password, setPassword }:
     }
 
     return (
-        <form className={`form ${classNameString}`} onSubmit={(e) => handleSubmit(e, username, password, routeForLogin)}>
+        <form className={`form ${classNameString}`} onSubmit={(e) => handleSubmit(e, username, password, url)}>
 
             <div className="input-group">
                 <label htmlFor="username">Felhasználónév</label>
@@ -58,7 +58,7 @@ const Form = ({ classNameString, username, setUsername, password, setPassword }:
                     value={username}
                     onChange={e => { handleChange(e.target.value, nameTouched, setNameTouched, setUsername) }} />
                 {
-                    (classNameString === 'login-form' && nameTouched) ?
+                    nameTouched ?
                         <ErrorMessage errors={nameValidationErrors} minStringLength={minNameLength} maxStringLength={maxStringLength} /> :
                         null
                 }
@@ -73,7 +73,7 @@ const Form = ({ classNameString, username, setUsername, password, setPassword }:
                     value={password}
                     onChange={e => { handleChange(e.target.value, passwordTouched, setPasswordTouched, setPassword) }} />
                 {
-                    (classNameString === 'login-form' && passwordTouched) ?
+                    passwordTouched ?
                         <ErrorMessage errors={passwordValidationErrors} minStringLength={minPasswordLength} maxStringLength={maxStringLength} /> :
                         null
                 }
