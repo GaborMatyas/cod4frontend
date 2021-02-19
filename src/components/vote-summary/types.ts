@@ -18,3 +18,8 @@ export interface UserCridentials {
     password: string;
     route: string;
 }
+export interface userDataForLogout {
+    userID: string;
+    token: string;
+}
+
