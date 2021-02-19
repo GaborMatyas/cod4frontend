@@ -12,3 +12,14 @@
 .vote-button {
 	@include button-style;
 }
+
+.vote-table-reset-button {
+	@include button-style;
+	background: linear-gradient(
+		220deg,
+		rgb(218, 38, 25) 0%,
+		rgb(177, 75, 75) 100%
+	);
+	box-shadow: 0px 36px 51px -3px rgba(218, 38, 25, 0.36);
+	margin-top: 25px;
+}
