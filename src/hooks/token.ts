@@ -5,7 +5,7 @@ import { TOKEN_KEY } from '@store/auth/constants';
 import { User } from '@store/auth/constants';
 
 export const getToken = (): User['token'] => {
-    return (sessionStorage.getItem(TOKEN_KEY) as User['token']);
+    return (sessionStorage.getItem(TOKEN_KEY));
 };
 
 export default function useToken() {

@@ -66,11 +66,9 @@ const VoteTable = (votes: VoteContainerProps): JSX.Element => {
             const indexOfDaysOfCurrentUser: number[] = [];
 
             currentNamesPerDayAlphabeticalOrder.forEach((day, index) => day.includes(currentUser.nickName) && indexOfDaysOfCurrentUser.push(index));
-            const authToken = getToken();
-
             const theDaysNameCurrentUserVotedFor: string[] = indexOfDaysOfCurrentUser.map(index => daysOfWeek[index]);
             const objectForSending: VoteObject = {
-                token: authToken,
+                token: getToken(),
                 body: {
                     id: currentUser.id,
                     dates: [...theDaysNameCurrentUserVotedFor]
@@ -100,7 +98,7 @@ const VoteTable = (votes: VoteContainerProps): JSX.Element => {
                 {voteItems}
             </div>
 
-            <button className='vote-button' onClick={() => (handleClick())} >
+            <button className='vote-button' onClick={() => handleClick()} >
                 {isCurrentUserVoted ? 'Módosítás' : 'Szavazok'}
             </button>
         </>
