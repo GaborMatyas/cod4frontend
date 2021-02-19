@@ -28,7 +28,7 @@ const RegisterPage = () => {
             <div className="change-page">
                 <span className="question">Már be vagy sorozva?</span>
                 <Link to={ROUTE_PATHS.Login}>
-                    <button>Bejelentkezés&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</button>
+                    <button>Jelentkezz be!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</button>
                 </Link>
             </div>
         </div>
