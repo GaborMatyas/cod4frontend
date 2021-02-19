@@ -14,15 +14,16 @@
 	font-size: 0.875rem;
 	font-weight: 700;
 	letter-spacing: 3px;
-	max-width: 240px;
-	padding: 20px 70px;
+	outline: none;
+	width: 240px;
+	height: 50px;
 	text-transform: uppercase;
 	transition: all 0.5s ease-in-out;
 
 	&:hover {
 		background: $cod-green-lightest;
 		color: $dark-gray-background;
-		transition: all 400ms ease;
+		transition: all 400ms ease-out;
 	}
 
 	&:disabled {
