@@ -5,6 +5,7 @@ import { votesInitialState } from './state';
 import { toast } from 'react-toastify';
 import { showErrorToastMessage } from '@components/toast-message/toast-message';
 import { fetchVotesThunk, sendVotesThunk } from '@store/votes/votes.thunk';
+import { ToastIds } from '@components/toast-message/toast-message.constants';
 
 interface UserAndDate {
     currentUserName: string;
@@ -48,7 +49,7 @@ const votesSlice = createSlice({
             state.status='fetched';
         },
         [sendVotesThunk.rejected.type]: (state) => {
-            showErrorToastMessage('Hiba, ellenőrizd az elérési utat és hogy a szerver elérhető e!', toast.POSITION.TOP_RIGHT);
+            showErrorToastMessage('Hiba, ellenőrizd az elérési utat és hogy a szerver elérhető e!', toast.POSITION.TOP_RIGHT, ToastIds.ServerUnavailable);
             state.status='failed';
         },
     }
