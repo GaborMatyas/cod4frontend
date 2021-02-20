@@ -1,5 +1,3 @@
-// @import "breakpoint-slicer";
-
 $dark-gray-background: #1b1b20;
 $light-blue: #26b9d1;
 $light-grey: #d9d9db;
@@ -28,7 +26,7 @@ $slices: (
 	xs-mobile: 0,
 	s-mobile: 320,
 	m-mobile: 360,
-	l-mobile: 420,
+	l-mobile: 410,
 	s-tablet: 600,
 	m-tablet: 720,
 	l-tablet: 800,
@@ -38,6 +36,3 @@ $slices: (
 	xl-desktop: 1600,
 	hd: 1920,
 );
-
-// to prevent overlapping
-$slicer-anti-overlap-corrections: 1px, -0.06em, -0.06rem;

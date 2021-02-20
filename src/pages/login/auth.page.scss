@@ -1,0 +1,77 @@
+@use "node_modules/breakpoint-slicer" as bs;
+
+.container-background {
+	@include mobile-visitor-route-background;
+	display: flex;
+	align-items: center;
+
+	.login-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		max-width: 500px;
+		margin-top: auto;
+		margin-bottom: auto;
+		overflow: hidden;
+
+		.logo {
+			@include bs.to(s-mobile, $slices: $slices) {
+				display: none;
+			}
+
+			@include bs.from(m-mobile, $slices: $slices) {
+				display: block;
+				height: 30px;
+				margin-top: auto;
+				margin-bottom: auto;
+			}
+
+			@include bs.from(l-mobile, $slices: $slices) {
+				height: 80px;
+				margin-bottom: 50px;
+			}
+		}
+
+		.title,
+		label {
+			color: $text-white;
+		}
+
+		.title-container {
+			text-align: center;
+
+			.title {
+				letter-spacing: 1px;
+			}
+		}
+
+		.form {
+			@include bs.to(s-mobile, $slices: $slices) {
+				margin-top: 30px;
+				margin-bottom: 30px;
+
+				.input-group {
+					margin-bottom: 50px;
+				}
+			}
+		}
+
+		.change-page {
+			width: 80%;
+			margin: auto;
+
+			.question {
+				color: $light-grey;
+				display: block;
+			}
+
+			button {
+				padding: 15px 15px 15px 0px;
+				border: none;
+				background: none;
+				color: $text-white;
+				margin: auto;
+			}
+		}
+	}
+}
