@@ -1,0 +1,64 @@
+.loader-background {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: rgba(34, 31, 31, 0.74);
+	z-index: 10;
+
+	.loader-wrapper {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		justify-content: center;
+		align-items: center;
+
+		.loader {
+			border: 3px solid #d6336c;
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			border-left-color: transparent;
+			border-right-color: transparent;
+			animation: rotate 2s cubic-bezier(0.26, 1.36, 0.74, -0.29) infinite;
+			position: absolute;
+			z-index: 11;
+		}
+
+		#loader2 {
+			border: 3px solid #3bc9db;
+			width: 220px;
+			height: 220px;
+			border-left-color: transparent;
+			border-right-color: transparent;
+			animation: rotate2 2s cubic-bezier(0.26, 1.36, 0.74, -0.29) infinite;
+			z-index: 11;
+			position: absolute;
+		}
+
+		#text {
+			color: white;
+			font-size: 20px;
+			position: absolute;
+		}
+	}
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotateZ(-360deg);
+	}
+	100% {
+		transform: rotateZ(0deg);
+	}
+}
+
+@keyframes rotate2 {
+	0% {
+		transform: rotateZ(360deg);
+	}
+	100% {
+		transform: rotateZ(0deg);
+	}
+}

@@ -17,6 +17,3 @@ export default configureStore({
   reducer: rootReducer,
   middleware: middlewares
 });
-
-// export type AppDispatch = typeof store.dispatch
-// export const useAppDispatch = () => useDispatch<AppDispatch>()

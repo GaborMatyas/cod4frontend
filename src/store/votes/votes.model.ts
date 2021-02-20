@@ -16,4 +16,3 @@ export type ResetVoteObject = {
         userId: string
     }
 }
-  

@@ -2,10 +2,12 @@ import { combineReducers } from '@reduxjs/toolkit';
 
 import voteReducer from './votes/votes.slice';
 import authReducer from './auth/auth.slice';
+import appReducer from './app/app.slice';
 
 const rootReducer = combineReducers({
     votes: voteReducer,
-    auth: authReducer
+    auth: authReducer,
+    app: appReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

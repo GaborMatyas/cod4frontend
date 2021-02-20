@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-import { userInitialState } from './state';
+import { USER_INITIAL_STATE } from './auth.state';
 import { sendUserCredentialsThunk } from '@store/auth/auth.thunks';
-import { TOKEN_KEY, ROLE_KEY, Roles } from '@store/auth/constants';
+import { TOKEN_KEY, ROLE_KEY, Roles } from '@app/store/auth/auth.constants';
 import { showErrorToastMessage } from '@components/toast-message/toast-message';
 import { ToastIds } from '@components/toast-message/toast-message.constants';
 
 const userSlice = createSlice({
     name: 'auth',
-    initialState: userInitialState,
+    initialState: USER_INITIAL_STATE,
     reducers: {
         setAuthTokenState: (state, {payload}: PayloadAction<string>) => {
             if(payload !==undefined && payload !== 'undefined'){

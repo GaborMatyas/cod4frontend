@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { ROOT_DOMAIN, VOTE_SUBROUTE } from './constants';
 import { Vote } from '../../components/vote-summary/types'
 import { VoteObject, ResetVoteObject }from '@store/votes/votes.model';
+import { setAppLoading } from '@store/app/app.slice';
 
 const fetchVotes = async(url: string): Promise<Array<Vote>> => {
     try {
@@ -71,18 +72,22 @@ export const fetchVotesThunk = createAsyncThunk(
 
 export const sendVotesThunk = createAsyncThunk(
     'votes/sendVotes', 
-    async (payload: VoteObject) => {
+    async (payload: VoteObject, {dispatch}) => {
+        dispatch(setAppLoading(true));
         const {token, body} = payload;
         const freshVoteStateFromBackend = await postVotes(`${ROOT_DOMAIN}/${VOTE_SUBROUTE}`, token, body)
+        dispatch(setAppLoading(false));
         return freshVoteStateFromBackend as Vote[];
     }
 );
 
 export const resetVotesThunk = createAsyncThunk(
     'votes/resetVotes', 
-    async (payload: ResetVoteObject) => {
+    async (payload: ResetVoteObject, {dispatch}) => {
+        dispatch(setAppLoading(true));
         const {token, body} = payload;
         const response = await resetVotes(`${ROOT_DOMAIN}/${VOTE_SUBROUTE}`, token, body)
+        dispatch(setAppLoading(false));
         return response as Vote[];
     }
 );
