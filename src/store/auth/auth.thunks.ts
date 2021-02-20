@@ -21,8 +21,12 @@ export const sendUserCredentials = async (credentials: UserCridentials) => {
       .then(data => {
         if (data.status===401 || data.status===400) {
           showErrorToastMessage(errorMessage, toast.POSITION.TOP_RIGHT, ToastIds.ServerUnavailable );
+          return false;
         }
         return data.json();
+      }).catch(()=>{
+        showErrorToastMessage(errorMessage, toast.POSITION.TOP_RIGHT, ToastIds.ServerUnavailable );
+        return false;
       })
 };
 
@@ -48,9 +52,13 @@ export const sendUserCredentialsThunk = createAsyncThunk(
     async (credentials: UserCridentials, {dispatch}) => {
         dispatch(setAppLoading(true));
         const response = await sendUserCredentials(credentials);
-        dispatch(setAuthTokenState(response.token));
-        dispatch(setAppLoading(false));
-        dispatch(setUserRole(Roles.Admin));
+        if (!response) {
+          dispatch(setAppLoading(false));
+        } else {
+          dispatch(setAuthTokenState(response.token));
+          dispatch(setAppLoading(false));
+          dispatch(setUserRole(Roles.Admin));
+        }
         return response;
     }
 );
