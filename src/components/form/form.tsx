@@ -6,7 +6,7 @@ import { sendUserCredentialsThunk } from '@store/auth/auth.thunks';
 import SubmitButton from '@components/submit-button/submit-button';
 import { validation } from './form.utils';
 import { maxStringLength, minNameLength, minPasswordLength, FormTypes } from './constants';
-import { routeForLogin, routeForRegistration } from '@store/auth/constants';
+import { routeForLogin, routeForRegistration } from '@app/store/auth/auth.constants';
 import VisibilityONIcon from '@assets/img/password-visibility-on.svg';
 import VisibilityOFFIcon from '@assets/img/password-visibility-off.svg';
 
@@ -28,15 +28,14 @@ const Form = ({ classNameString, username, setUsername, password, setPassword }:
     const url = (classNameString === FormTypes.LOGIN_PAGE) ? routeForLogin : routeForRegistration;
     const submitButtonText = (classNameString === FormTypes.LOGIN_PAGE) ? 'Bejelentkezés' : 'Regisztráció';
 
-    const [nameTouched, setNameTouched] = useState(false);
-    const [passwordTouched, setPasswordTouched] = useState(false);
-    const [passwordVisible, setPasswordVisibility] = useState(false);
+    const [isNameTouched, setNameTouched] = useState(false);
+    const [isPasswordTouched, setPasswordTouched] = useState(false);
+    const [isPasswordVisible, setPasswordVisibility] = useState(false);
     const [isCapsLockOn, setCapsLockOn] = useState(false);
 
     const dispatch = useDispatch();
 
-    const onKeyDown = (keyEvent: React.KeyboardEvent<HTMLInputElement>) => {
-        console.log(typeof keyEvent);
+    const handleCapsLockState = (keyEvent: React.KeyboardEvent<HTMLInputElement>) => {
         (keyEvent.getModifierState("CapsLock")) ? setCapsLockOn(true) : setCapsLockOn(false)
     };
 
@@ -66,9 +65,9 @@ const Form = ({ classNameString, username, setUsername, password, setPassword }:
                     name="username"
                     placeholder="Mi a neved a harcmezőn?"
                     value={username}
-                    onChange={e => { handleChange(e.target.value, nameTouched, setNameTouched, setUsername) }} />
+                    onChange={e => { handleChange(e.target.value, isNameTouched, setNameTouched, setUsername) }} />
                 {
-                    nameTouched ?
+                    isNameTouched ?
                         <ErrorMessage errors={nameValidationErrors} minStringLength={minNameLength} maxStringLength={maxStringLength} /> :
                         null
                 }
@@ -78,15 +77,17 @@ const Form = ({ classNameString, username, setUsername, password, setPassword }:
                 {isCapsLockOn ? <span className="caps-lock-error-message">A Caps Lock be van kapcsolva</span> : null}
                 <label htmlFor="password">Jelszó</label>
                 <input
-                    type={passwordVisible ? 'text' : "password"}
+                    type={isPasswordVisible ? 'text' : "password"}
                     name="password"
                     placeholder="Add meg a jelszavad"
                     value={password}
-                    onKeyDown={(e) => onKeyDown(e)}
-                    onChange={e => { handleChange(e.target.value, passwordTouched, setPasswordTouched, setPassword) }} />
-                {/* {passwordVisible ? <VisibilityONIcon onClick={() => setPasswordVisibility(false)} /> : <VisibilityOFFIcon onClick={() => setPasswordVisibility(true)} />} */}
+                    onKeyDown={(e) => handleCapsLockState(e)}
+                    onChange={e => { handleChange(e.target.value, isPasswordTouched, setPasswordTouched, setPassword) }} />
+                <div className="svg-wrapper" onClick={() => setPasswordVisibility(!isPasswordVisible)}>
+                    {isPasswordVisible ? <VisibilityONIcon /> : <VisibilityOFFIcon />}
+                </div>
                 {
-                    passwordTouched ?
+                    isPasswordTouched ?
                         <ErrorMessage errors={passwordValidationErrors} minStringLength={minPasswordLength} maxStringLength={maxStringLength} /> :
                         null
                 }

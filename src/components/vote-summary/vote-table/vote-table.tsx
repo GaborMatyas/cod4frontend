@@ -13,8 +13,8 @@ import {
     isVotesStateChanged
 } from './vote-table.utils';
 import { Vote } from '@components/vote-summary/types';
-import { User } from '@store/auth/constants';
-import { getToken } from '@hooks/token';
+import { User } from '@app/store/auth/auth.constants';
+import { getToken } from '@store/auth/auth.utils';
 import { sendVotesThunk } from '@store/votes/votes.thunk';
 
 

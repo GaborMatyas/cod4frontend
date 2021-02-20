@@ -5,7 +5,7 @@ import ProgressBar from '@components/vote-summary/progress-bar/progress-bar';
 import SoldierIcon from '@assets/img/soldier-standing.svg';
 import { UserWithAvatar } from '@components/vote-summary/types';
 import { selectUserAvatarURL } from '@app/store/auth/auth.selectors';
-import { togglehUserVoteWithCheckbox } from '@store/votes/votes.slice';
+import { toggleUserVoteWithCheckbox } from '@store/votes/votes.slice';
 
 import './vote-item.scss'
 interface VoteItemProps {
@@ -63,7 +63,7 @@ const VoteItem = ({ date, membersVotedForThisDay, isWinner, progressBarSize, isC
             name="day-checkbox"
             type="checkbox"
             checked={isChecked}
-            onChange={() => dispatch(togglehUserVoteWithCheckbox({
+            onChange={() => dispatch(toggleUserVoteWithCheckbox({
                 currentUserName,
                 date,
                 avatarURL
