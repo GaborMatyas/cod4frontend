@@ -44,6 +44,10 @@ module.exports = {
         ]
       },
       {
+        test: /\.(png|jpg)$/,
+        loader: 'url-loader'
+      },
+      {
         test: /\.css$/,
         use: [
           { loader: 'style-loader' },
@@ -51,7 +55,7 @@ module.exports = {
         ]
       },
       {    
-        test: /\.(woff|woff2|png|otf)$/,
+        test: /\.(woff|woff2|otf)$/,
         loader: "file-loader"
       },
       {
