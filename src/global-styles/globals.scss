@@ -1,3 +1,5 @@
+// @import "breakpoint-slicer";
+
 $dark-gray-background: #1b1b20;
 $light-blue: #26b9d1;
 $light-grey: #d9d9db;
@@ -21,3 +23,21 @@ $main-green: #01df5b;
 $dark-black-progressbar: #0d0c1e;
 
 $error-red: #e74c3c;
+
+$slices: (
+	xs-mobile: 0,
+	s-mobile: 320,
+	m-mobile: 360,
+	l-mobile: 420,
+	s-tablet: 600,
+	m-tablet: 720,
+	l-tablet: 800,
+	s-desktop: 1024,
+	m-desktop: 1200,
+	l-desktop: 1440,
+	xl-desktop: 1600,
+	hd: 1920,
+);
+
+// to prevent overlapping
+$slicer-anti-overlap-corrections: 1px, -0.06em, -0.06rem;
