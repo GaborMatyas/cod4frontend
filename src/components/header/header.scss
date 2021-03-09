@@ -1,59 +1,89 @@
+@use "node_modules/breakpoint-slicer" as bs;
+
 #page-header {
-	height: 120px;
-	width: 100vw;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	flex-direction: column;
+	height: calc(
+		#{$nav-and-navitem-height-on-mobile} + #{$navitem-margin-on-mobile} + #{$navitem-margin-on-mobile}
+	);
 	position: relative;
+	width: 100vw;
 
-	.user-container {
-		margin-top: 15px;
-		margin-bottom: 10px;
-		display: flex;
-		flex-direction: column;
+	.head-line {
 		align-items: center;
-		justify-content: center;
-		height: 115px;
+		background-color: $transparent-dark-gray-background;
+		display: flex;
+		height: $nav-and-navitem-height-on-mobile;
+		justify-content: space-between;
+		width: 100%;
 
-		.avatar {
-			background-size: contain;
-			height: 80px;
-			border-radius: 50px;
-			width: 80px;
-			margin-bottom: 10px;
-			background-blend-mode: luminosity;
+		.mw4logo {
+			background: url("../../assets/img/M4Wlogo.png") left center
+				no-repeat;
+			background-size: cover;
+			height: 50%;
+			margin-left: $navitem-margin-on-mobile;
+			width: 60px;
+
+			@include bs.from(l-tablet, $slices: $slices) {
+				margin-left: 10vw;
+			}
+
+			@include bs.from(xl-desktop, $slices: $slices) {
+				margin-left: 15vw;
+			}
 		}
 
-		.username {
-			// display: none;
-			color: $text-white;
-			font-size: 1.1rem;
-		}
-	}
+		.user-container {
+			align-items: center;
+			display: flex;
+			height: $nav-and-navitem-height-on-mobile;
+			justify-content: center;
+			margin-right: $navitem-margin-on-mobile;
 
-	.main-title {
-		background: url("../../assets/img/4-43271_render-cod4-call-of-duty-4.png")
-			center center no-repeat;
-		background-size: contain;
-		display: none;
-		height: 150px;
-		width: 80%;
-	}
+			@include bs.from(l-tablet, $slices: $slices) {
+				margin-right: 10vw;
+			}
 
-	.logout {
-		cursor: pointer;
-		max-width: 50px;
-		position: relative;
+			@include bs.from(xl-desktop, $slices: $slices) {
+				margin-right: 15vw;
+			}
 
-		span {
-			color: $text-white;
-		}
+			.username {
+				margin-right: 15px;
+			}
 
-		svg {
-			display: inline;
-			fill: $text-white;
-			height: 35px;
-			width: 35px;
+			.avatar {
+				background-blend-mode: luminosity;
+				background-size: contain;
+				border-radius: 50px;
+				border: 2px solid $transparent-dark-gray-background;
+				height: 25px;
+				position: relative;
+				width: 25px;
+
+				&:before {
+					border-radius: 50px;
+					border: 2px solid $text-white;
+					bottom: -5px;
+					content: " ";
+					left: -5px;
+					position: absolute;
+					right: -5px;
+					top: -5px;
+					z-index: 100;
+				}
+			}
+
+			.username {
+				display: none;
+
+				@include bs.from(s-tablet, $slices: $slices) {
+					color: $text-white;
+					display: block;
+					font-size: 1rem;
+				}
+			}
 		}
 	}
 }

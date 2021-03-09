@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import Navbar from '@components/navbar/navbar';
 import { selectUserState } from '@store/auth/auth.selectors';
 import LogoutIcon from '@assets/img/logout.svg';
 
@@ -12,24 +13,28 @@ const Header = () => {
     const user = useSelector(selectUserState);
     return (
         <header id='page-header'>
-            <div className="user-container">
-                <div
-                    className="avatar"
-                    style={{
-                        background: `rgba(8, 97, 44, 0.2) url(${user.avatarURL}) center center no-repeat`,
-                        backgroundSize: 'contain'
-                    }} />
-                <span className="username">{user.nickName}</span>
+            <div className="head-line">
+                <div className="mw4logo"><i></i></div>
+                <div className="user-container">
+                    <span className="username">{user.nickName}</span>
+                    <div
+                        className="avatar"
+                        style={{
+                            background: `rgba(53, 53, 63, 0.8) url(${user.avatarURL}) center center no-repeat`,
+                            backgroundSize: 'contain'
+                        }} />
+                </div>
             </div>
-            <div className="main-title" />
+            <Navbar />
             <div className="logout" onClick={() => dispatch(logoutUserThunk({
                 userID: user.id.toString(),
                 token: user.token
             }))}>
-                <LogoutIcon />
-                <span>exit</span>
+                {/* <LogoutIcon /> */}
+                <button className="logout-button">EXIT</button>
             </div>
-        </header>
+            {/* <div className="main-title" /> */}
+        </header >
     )
 }
 
