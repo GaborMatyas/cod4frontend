@@ -3,11 +3,13 @@
 #page-header {
 	display: flex;
 	flex-direction: column;
-	height: calc(
-		#{$nav-and-navitem-height-on-mobile} + #{$navitem-margin-on-mobile} + #{$navitem-margin-on-mobile}
-	);
+	height: 50px;
 	position: relative;
 	width: 100vw;
+
+	@include bs.from(s-tablet, $slices: $slices) {
+		height: 100px;
+	}
 
 	.head-line {
 		align-items: center;
@@ -18,9 +20,8 @@
 		width: 100%;
 
 		.mw4logo {
-			background: url("../../assets/img/M4Wlogo.png") left center
+			background: url("../../assets/img/M4Wlogo.png") left center / cover
 				no-repeat;
-			background-size: cover;
 			height: 50%;
 			margin-left: $navitem-margin-on-mobile;
 			width: 60px;
@@ -81,7 +82,7 @@
 				@include bs.from(s-tablet, $slices: $slices) {
 					color: $text-white;
 					display: block;
-					font-size: 1rem;
+					font-size: $paragraph;
 				}
 			}
 		}

@@ -1,0 +1,26 @@
+@use "node_modules/breakpoint-slicer" as bs;
+
+.votepage-background-picture {
+	height: 100vh;
+	width: 100%;
+
+	@include bs.from(l-mobile, $slices: $slices) {
+		background: url("../../assets/img/vote-bakcground-centered.jpg") center
+			bottom / cover no-repeat;
+	}
+
+	@include bs.from(s-desktop, $slices: $slices) {
+		background: url("../../assets/img/vote-bakcground-2560x1440.png") right
+			center / cover no-repeat;
+	}
+
+	.background-gradient {
+		align-items: center;
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		position: relative;
+		width: 100%;
+	}
+}

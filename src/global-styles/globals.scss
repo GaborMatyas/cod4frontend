@@ -1,26 +1,48 @@
+//colors
+$text-white: #e9e9e9;
+$cod-grey: #939693;
+$main-green: rgb(167, 226, 56);
+$main-green-transparent: rgba(167, 226, 56, 0.3);
+$red: #e74c3c;
+$red-transparent: rgba(231, 76, 60, 0.3);
 $dark-gray-background: #1b1b20;
+$transparent-dark-gray-background: rgba(27, 27, 32, 0.9);
+///uesd colors end here
+$medium-gray-background: #35353f;
+
+$transparent-medium-gray-background: rgba(53, 53, 63, 0.7);
+
 $light-blue: #26b9d1;
 $light-grey: #d9d9db;
-$medium-gray-background: #35353f;
-$text-white: #f5f6f7;
+$soft-grey: #4e536b;
 
 //from black and red glowing design palette
 $medium-grey: #161929;
 $dark-grey: #181b2b;
-$soft-grey: #4e536b;
 
 //palett from cod picture
 $cod-green-lightest: #e7f5e4;
-$cod-green-soft: #b8c99f;
 $cod-green-medium: #a3d2ae;
 $cod-green-rich: #a0ceaa;
 $cod-green-dark: #646b3f;
-$cod-grey: #939693;
 
-$main-green: #01df5b;
 $dark-black-progressbar: #0d0c1e;
 
-$error-red: #e74c3c;
+//headerer constants
+$navitem-margin-on-mobile: 15px;
+$nav-and-navitem-height-on-mobile: 50px;
+
+//vote-item constants
+$smaller-items-width: 15%;
+$avatar-diameter: 25px;
+
+//font sizes
+$main-title: 37px;
+$title1: 28px;
+$title2: 22px;
+$headline: 20px;
+$paragraph: 18px;
+$small-note-font-size: 16px;
 
 $slices: (
 	xs-mobile: 0,

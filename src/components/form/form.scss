@@ -1,23 +1,24 @@
 .form {
+	box-sizing: content-box;
 	display: flex;
 	flex-direction: column;
 	margin: 50px auto 50px auto;
 	width: 80%;
-	box-sizing: content-box;
 
 	.input-group {
+		margin-bottom: 95px;
+		margin-top: 0;
+		position: relative;
+
 		.caps-lock-error-message {
+			color: $red;
 			position: absolute;
 			top: -30px;
-			color: $error-red;
 		}
 
-		position: relative;
-		margin-top: 0;
-		margin-bottom: 75px;
-
 		label {
-			padding-left: 5px;
+			color: $text-white;
+			font-size: $small-note-font-size;
 			letter-spacing: 1px;
 		}
 
@@ -27,13 +28,14 @@
 			border-width: 0 0 2px;
 			box-sizing: border-box;
 			color: $text-white;
-			margin-top: 15px;
+			font-size: $paragraph;
+			letter-spacing: 1px;
 			margin-bottom: 5px;
+			margin-top: 15px;
 			outline: none;
 			padding-bottom: 8px;
-			width: 100%;
 			padding-left: 0;
-			letter-spacing: 1px;
+			width: 100%;
 
 			&::placeholder {
 				color: $light-grey;
@@ -49,11 +51,11 @@
 		}
 
 		svg {
+			fill: $text-white;
+			height: 80%;
 			position: absolute;
 			right: 5px;
-			height: 80%;
 			top: 30px;
-			fill: $text-white;
 		}
 	}
 }
