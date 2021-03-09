@@ -12,17 +12,7 @@ const Navbar = () => (
             </li>
             <li className="menu-item">
                 <button>
-                    Csütörtök<span id="exclamation-mark">&nbsp;!</span>
-                </button>
-            </li>
-            <li className="menu-item disabled">
-                <button>
-                    GY.I.K.
-                </button>
-            </li>
-            <li className="menu-item disabled">
-                <button>
-                    Légió
+                    Csütörtök<span id="exclamation-mark">!</span>
                 </button>
             </li>
             <li className="menu-item">

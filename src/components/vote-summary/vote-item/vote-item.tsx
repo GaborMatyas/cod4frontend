@@ -44,7 +44,7 @@ const VoteItem = ({ date, membersVotedForThisDay, isWinner, progressBarSize, isC
                         <div
                             className="avatar"
                             style={{
-                                background: `rgba(8, 97, 44, 0.2) url(${member.avatarURL}) center center no-repeat`,
+                                background: `rgba(53, 53, 63, 0.8) url(${member.avatarURL}) center center no-repeat`,
                                 backgroundSize: 'contain'
                             }} />
                     </li>
