@@ -1,12 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 import { Vote } from '@components/vote-summary/types'
 import { votesInitialState } from './votes.state';
-import { toast } from 'react-toastify';
-import { showErrorToastMessage } from '@components/toast-message/toast-message';
+import { showToastMessage, ToastType } from '@components/toast-message/toast-message';
 import { fetchVotesThunk, sendVotesThunk } from '@store/votes/votes.thunk';
 import { ToastIds } from '@components/toast-message/toast-message.constants';
-import { setAppLoading } from '@store/app/app.slice';
 
 interface UserAndDate {
     currentUserName: string;
@@ -44,7 +43,7 @@ const votesSlice = createSlice({
             state.votes=action.payload;;
         },
         [sendVotesThunk.rejected.type]: (state) => {
-            showErrorToastMessage('Hiba, ellenőrizd az elérési utat és hogy a szerver elérhető e!', toast.POSITION.TOP_RIGHT, ToastIds.ServerUnavailable);
+            showToastMessage('Hiba, ellenőrizd az elérési utat és hogy a szerver elérhető e!', toast.POSITION.TOP_RIGHT, ToastIds.ServerUnavailable, ToastType.Error);
         },
     }
 });

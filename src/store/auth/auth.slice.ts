@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { USER_INITIAL_STATE } from './auth.state';
 import { sendUserCredentialsThunk } from '@store/auth/auth.thunks';
 import { TOKEN_KEY, ROLE_KEY, Roles } from '@app/store/auth/auth.constants';
-import { showErrorToastMessage } from '@components/toast-message/toast-message';
+import { showToastMessage, ToastType } from '@components/toast-message/toast-message';
 import { ToastIds } from '@components/toast-message/toast-message.constants';
 
 const userSlice = createSlice({
@@ -27,7 +27,7 @@ const userSlice = createSlice({
             sessionStorage.setItem(ROLE_KEY, Roles.Admin);
         },
         [sendUserCredentialsThunk.rejected.type]: () => {
-            showErrorToastMessage('Hiba: A szerver valószínűleg nem elérhető!', toast.POSITION.TOP_RIGHT, ToastIds.ServerUnavailable);
+            showToastMessage('Hiba: A szerver valószínűleg nem elérhető!', toast.POSITION.TOP_RIGHT, ToastIds.ServerUnavailable, ToastType.Error);
         }
     }
 });

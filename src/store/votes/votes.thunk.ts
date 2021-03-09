@@ -1,10 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
+import { showToastMessage, ToastType } from '@components/toast-message/toast-message';
 import { ROOT_DOMAIN, VOTE_SUBROUTE } from './constants';
 import { Vote } from '../../components/vote-summary/types'
 import { VoteObject, ResetVoteObject }from '@store/votes/votes.model';
 import { setAppLoading } from '@store/app/app.slice';
+import { ToastIds } from '@components/toast-message/toast-message.constants';
 
 const fetchVotes = async(url: string): Promise<Array<Vote>> => {
     try {
@@ -28,6 +30,7 @@ const postVotes = async(url: string, token: string, body: Object): Promise<Array
             body: JSON.stringify(body)
         });
         if (response.status === 200) {
+            showToastMessage('A szavazatodat sikeresen feldolgoztuk!', toast.POSITION.TOP_RIGHT, ToastIds.ServerUnavailable, ToastType.Success);
             const json = await response.json();
             return([...json.votes]);
         } else {
@@ -50,12 +53,14 @@ const resetVotes = async(url: string, token: string, body: Object): Promise<Arra
             body: JSON.stringify(body)
         });
         if (response.status === 200) {
+            showToastMessage('A szavazatokat töröltük erre a hétre, várjuk a friss voksokat', toast.POSITION.TOP_RIGHT, ToastIds.ServerUnavailable, ToastType.Success);
             const json = await response.json();
             return([...json.votes]);
         } else {
             return Promise.reject();
         }
     } catch (error) {
+        showToastMessage('A szavazatokat nem tudtuk törölni, ellenőrizd a szervert!', toast.POSITION.TOP_RIGHT, ToastIds.ServerUnavailable, ToastType.Error);
         console.error(error);
         throw new Error(error);
     }    
@@ -64,7 +69,7 @@ const resetVotes = async(url: string, token: string, body: Object): Promise<Arra
 export const fetchVotesThunk = createAsyncThunk(
     'votes/fetchVotes', 
     async (_, {getState}) => {
-        //vote -ot hozzá kell tenni az url végére productionben
+        //vote subroute-ot hozzá kell tenni az url végére productionben
         const response = await fetchVotes(`${ROOT_DOMAIN}`)
         return (await response) as Vote[];
     }
