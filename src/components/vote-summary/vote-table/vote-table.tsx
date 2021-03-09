@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setSnapshot } from '@store/votes/votes.slice';
 import { selectUserState } from '@store/auth/auth.selectors';
 import { selectVotesSnapshot } from '@store/votes/votes.selectors';
+import { Roles } from '@app/store/auth/auth.constants';
 import VoteItem from '@components/vote-summary/vote-item/vote-item';
 import {
     calculateProgressBar,
@@ -13,9 +14,10 @@ import {
     isVotesStateChanged
 } from './vote-table.utils';
 import { Vote } from '@components/vote-summary/types';
+import { ResetVoteObject } from '@store/votes/votes.model';
 import { User } from '@app/store/auth/auth.constants';
 import { getToken } from '@store/auth/auth.utils';
-import { sendVotesThunk } from '@store/votes/votes.thunk';
+import { sendVotesThunk, resetVotesThunk } from '@store/votes/votes.thunk';
 
 
 import './vote-table.scss';
@@ -92,15 +94,33 @@ const VoteTable = (votes: VoteContainerProps): JSX.Element => {
         () => handleVoteing(votes.votes, votesSnapshot, currentUser) :
         () => takeSnapshotAndShowCheckboxes(votes.votes);
 
+    const objectForSendingReset: ResetVoteObject = {
+        token: getToken(),
+        body: {
+            userId: currentUser.id.toString()
+        }
+    }
+
+    const resetAllVoteFromSummaryThisWeek = (objectForSendingReset: ResetVoteObject) => {
+        dispatch(resetVotesThunk(objectForSendingReset));
+    }
+
     return (
         <>
             <div className="vote-table">
                 {voteItems}
+                <div className="button-container">
+                    <button className='vote-button' onClick={() => handleClick()} >
+                        {isCurrentUserVoted ? 'Módosítás' : 'Szavazok'}
+                    </button>
+                    {currentUser.role === Roles.Admin &&
+                        <button
+                            className='vote-table-reset-button'
+                            onClick={() => resetAllVoteFromSummaryThisWeek(objectForSendingReset)} >Teljes törlés
+                        </button>
+                    }
+                </div>
             </div>
-
-            <button className='vote-button' onClick={() => handleClick()} >
-                {isCurrentUserVoted ? 'Módosítás' : 'Szavazok'}
-            </button>
         </>
     )
 }
