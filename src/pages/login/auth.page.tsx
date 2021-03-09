@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Form from '@components/form/form';
-import { ROUTE_PATHS } from '@router/routes';
 import { FormTypes } from '@components/form/constants';
 import { LoginProps, RegistrationProps } from './auth.page.constants';
 import { selectAppLoading } from '@store/app/app.selectors';
@@ -12,11 +11,13 @@ import { useSelector } from 'react-redux';
 
 import './auth.page.scss';
 
-type Props = {
+export type authPageProps = {
     title: string;
     formClass: FormTypes;
     question: string;
     smallButtonText: string;
+    headline: string;
+    instruction: string;
 }
 
 const AuthPage = () => {
@@ -24,28 +25,35 @@ const AuthPage = () => {
     const [password, setPassword] = useState('');
     const isAppLoading = useSelector(selectAppLoading);
     const [isLoginPage, setLoginpage] = useState(true);
-    const props: Props = isLoginPage ? LoginProps : RegistrationProps;
+    const props: authPageProps = isLoginPage ? LoginProps : RegistrationProps;
 
     return (
         <>
-            <div className="container-background">
-                {isAppLoading ? <Loader /> : null}
-                <div className="login-container">
-                    <div className="title-container">
-                        <Logo />
-                        <h1 className="title">{props.title}</h1>
-                    </div>
+            <div className="authpage-background-picture">
+                <div className="background-gradient">
+                    <div className="auth-page-big-logo" />
+                    <div className="login-container-background">
+                        {isAppLoading ? <Loader /> : null}
+                        <div className="login-container">
+                            <div className="title-container">
+                                <Logo />
+                                <h3 className="headline">{props.headline}</h3>
+                                <span className="instruction">{props.instruction}</span>
+                                <h2 className="form-title">{props.title}</h2>
+                            </div>
 
-                    <Form
-                        classNameString={props.formClass}
-                        username={email}
-                        setUsername={setUsername}
-                        password={password}
-                        setPassword={setPassword} />
+                            <Form
+                                classNameString={props.formClass}
+                                username={email}
+                                setUsername={setUsername}
+                                password={password}
+                                setPassword={setPassword} />
 
-                    <div className="change-page">
-                        <span className="question">{props.question}</span>
-                        <button onClick={() => setLoginpage(!isLoginPage)}>{props.smallButtonText}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</button>
+                            <div className="change-page">
+                                <span className="question">{props.question}</span>
+                                <button onClick={() => setLoginpage(!isLoginPage)}>{props.smallButtonText}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
