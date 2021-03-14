@@ -1,16 +1,10 @@
 @use "node_modules/breakpoint-slicer" as bs;
 
-.navbar {
+.menu {
 	display: none;
 
 	//I had to add min a max height because the single height property did not work on firefox for some reason
 	@include bs.from(s-tablet, $slices: $slices) {
-		background: rgb(27, 27, 32);
-		background: linear-gradient(
-			180deg,
-			rgba(27, 27, 32, 0.7) 0%,
-			rgba(0, 0, 0, 0) 100%
-		);
 		border-top: 2px solid $main-green;
 		display: flex;
 		justify-content: center;
@@ -29,25 +23,50 @@
 		justify-content: space-between;
 		list-style: none;
 		margin: 0;
-		max-width: 500px;
+		max-width: 410px;
 		padding: 0;
 		width: 100%;
+
+		@include bs.from(m-desktop, $slices: $slices) {
+			max-width: 500px;
+		}
 
 		.menu-item {
 			align-items: center;
 			display: flex;
 			height: 100%;
 
+			a {
+				@include menu-buttons-links-common-styles;
+				text-decoration: none;
+
+				&.selected {
+					background: rgb(166, 226, 54);
+					background: linear-gradient(
+						0deg,
+						rgba(166, 226, 54, 0.165703781512605) 0%,
+						rgba(0, 0, 0, 0) 66%
+					);
+					border-bottom: 2px solid $main-green;
+					color: $text-white;
+					padding: 13px;
+					padding-bottom: 5px;
+				}
+
+				&:hover {
+					@include menu-buttons-links-common-hover-styles;
+				}
+			}
+
 			button {
-				background: none;
-				border: none;
-				color: $text-white;
-				cursor: pointer;
-				font-size: $headline;
+				@include menu-buttons-links-common-styles;
 				height: 100%;
-				letter-spacing: 1px;
 				outline: none;
-				padding: 0;
+				padding: 13px;
+
+				&:hover {
+					@include menu-buttons-links-common-hover-styles;
+				}
 
 				#exclamation-mark {
 					color: $main-green;
