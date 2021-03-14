@@ -1,0 +1,57 @@
+@use "node_modules/breakpoint-slicer" as bs;
+
+.user-ticket {
+	align-items: center;
+	display: none;
+	height: $nav-and-navitem-height-on-mobile;
+	justify-content: center;
+	margin-right: $navitem-margin-on-mobile;
+
+	@include bs.from(s-tablet, $slices: $slices) {
+		display: flex;
+	}
+
+	@include bs.from(l-tablet, $slices: $slices) {
+		margin-right: 10vw;
+	}
+
+	@include bs.from(xl-desktop, $slices: $slices) {
+		margin-right: 15vw;
+	}
+
+	.username {
+		margin-right: 15px;
+	}
+
+	.avatar {
+		background-blend-mode: luminosity;
+		background-size: contain;
+		border-radius: 50px;
+		border: 2px solid $transparent-dark-gray-background;
+		height: 25px;
+		position: relative;
+		width: 25px;
+
+		&:before {
+			border-radius: 50px;
+			border: 2px solid $text-white;
+			bottom: -5px;
+			content: " ";
+			left: -5px;
+			position: absolute;
+			right: -5px;
+			top: -5px;
+			z-index: 100;
+		}
+	}
+
+	.username {
+		display: none;
+
+		@include bs.from(s-tablet, $slices: $slices) {
+			color: $text-white;
+			display: block;
+			font-size: $paragraph;
+		}
+	}
+}
