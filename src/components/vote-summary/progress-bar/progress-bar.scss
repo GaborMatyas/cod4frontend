@@ -1,57 +1,55 @@
-// progress bar appearance
-$background-color:#3d5980;
-$bar-empty:#55708d;
-$bar-color:#cfd6dd;
-
-$glow-width:60px;
-$glow-radius:10px;
-$glow-color:#04bfff;
+$bar-color: #cfd6dd;
 
 .progress-wrapper {
-  margin: 10px 0;
-  .progress-bar {
-    height:3px;
-    position:relative;
-    width:100%;
-    z-index:10;
-  
-    background-color:$dark-gray-background;
-    
-    .progress {
-      background-color:$light-grey;
-      border-radius: 0px 2px 2px 0px;
-      height:100%;
-      position:relative;
-      transition:width 0.5s ease-out;
-    }
-  }
+	margin: 10px 0;
+
+	.progress-bar {
+		height: 3px;
+		position: relative;
+		width: 100%;
+		z-index: 8;
+
+		background-color: $black;
+
+		.progress {
+			background-color: $light-grey;
+			border-radius: 0px 2px 2px 0px;
+			height: 100%;
+			position: relative;
+			transition: width 0.5s ease-out;
+		}
+	}
 }
 
 .vote-item.winner {
-  .progress-wrapper {
-    margin: 10px 0;
-    .progress-bar{
-      .progress {
-        background-color: $main-green;
-      }
-    }
-  }
+	.progress-wrapper {
+		margin: 10px 0;
+		.progress-bar {
+			.progress {
+				background-color: $main-green;
+			}
+		}
+	}
 }
 
 .label {
-  color:white;
-  font-family:Poppins;
-  font-size:24px;
-  text-shadow:0px 0px 2px $bar-color;
+	color: white;
+	font-family: Poppins;
+	font-size: 24px;
+	text-shadow: 0px 0px 2px $bar-color;
 }
 
 .fill {
-  animation-fill-mode:forwards;    
-  animation:fill-1 0.5s ease-out 0s;
-  width:0%;
+	animation-fill-mode: forwards;
+	animation: fill-1 0.5s ease-out 0s;
+	width: 0%;
 }
 
 @keyframes fill {
-  0% { width:0%; }
-  100% { width:70%; }
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 70%;
+	}
 }

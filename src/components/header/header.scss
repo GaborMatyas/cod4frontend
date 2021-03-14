@@ -11,78 +11,40 @@
 		height: 100px;
 	}
 
-	.head-line {
-		align-items: center;
-		background-color: $transparent-dark-gray-background;
-		display: flex;
-		height: $nav-and-navitem-height-on-mobile;
-		justify-content: space-between;
-		width: 100%;
+	.header-gradient {
+		background: rgb(8, 8, 8);
 
-		.mw4logo {
-			background: url("../../assets/img/M4Wlogo.png") left center / cover
-				no-repeat;
-			height: 50%;
-			margin-left: $navitem-margin-on-mobile;
-			width: 60px;
-
-			@include bs.from(l-tablet, $slices: $slices) {
-				margin-left: 10vw;
-			}
-
-			@include bs.from(xl-desktop, $slices: $slices) {
-				margin-left: 15vw;
-			}
+		@include bs.from(l-mobile, $slices: $slices) {
+			background: linear-gradient(
+				180deg,
+				rgba(8, 8, 8, 1) 0%,
+				rgba(8, 8, 8, 0.9724264705882353) 24%,
+				rgba(0, 0, 0, 0.8155637254901961) 54%,
+				rgba(0, 0, 0, 0.5046393557422969) 78%,
+				rgba(0, 0, 0, 0) 100%
+			);
 		}
 
-		.user-container {
+		.headline {
 			align-items: center;
 			display: flex;
 			height: $nav-and-navitem-height-on-mobile;
-			justify-content: center;
-			margin-right: $navitem-margin-on-mobile;
+			justify-content: space-between;
+			width: 100%;
 
-			@include bs.from(l-tablet, $slices: $slices) {
-				margin-right: 10vw;
-			}
+			.mw4logo {
+				background: url("../../assets/img/M4Wlogo.png") left center /
+					cover no-repeat;
+				height: 50%;
+				margin-left: $navitem-margin-on-mobile;
+				width: 60px;
 
-			@include bs.from(xl-desktop, $slices: $slices) {
-				margin-right: 15vw;
-			}
-
-			.username {
-				margin-right: 15px;
-			}
-
-			.avatar {
-				background-blend-mode: luminosity;
-				background-size: contain;
-				border-radius: 50px;
-				border: 2px solid $transparent-dark-gray-background;
-				height: 25px;
-				position: relative;
-				width: 25px;
-
-				&:before {
-					border-radius: 50px;
-					border: 2px solid $text-white;
-					bottom: -5px;
-					content: " ";
-					left: -5px;
-					position: absolute;
-					right: -5px;
-					top: -5px;
-					z-index: 100;
+				@include bs.from(l-tablet, $slices: $slices) {
+					margin-left: 10vw;
 				}
-			}
 
-			.username {
-				display: none;
-
-				@include bs.from(s-tablet, $slices: $slices) {
-					color: $text-white;
-					display: block;
-					font-size: $paragraph;
+				@include bs.from(xl-desktop, $slices: $slices) {
+					margin-left: 15vw;
 				}
 			}
 		}

@@ -33,6 +33,7 @@
 	}
 }
 
+//MENU ITEMS COMMON STYLES
 @mixin mobile-visitor-route-background {
 	background: linear-gradient(
 		28deg,
@@ -44,4 +45,18 @@
 	flex-direction: column;
 	height: 100vh;
 	width: 100%;
+}
+
+@mixin menu-buttons-links-common-hover-styles {
+	color: $text-white;
+	transition: color 0.3s ease-in;
+}
+
+@mixin menu-buttons-links-common-styles {
+	background: none;
+	border: none;
+	color: $cod-grey;
+	cursor: pointer;
+	font-size: $headline;
+	text-align: center;
 }

@@ -1,32 +1,35 @@
 //colors
 $text-white: #e9e9e9;
 $cod-grey: #939693;
-$main-green: rgb(167, 226, 56);
+$main-green: #a6e236;
 $main-green-transparent: rgba(167, 226, 56, 0.3);
 $red: #e74c3c;
 $red-transparent: rgba(231, 76, 60, 0.3);
-$dark-gray-background: #1b1b20;
-$transparent-dark-gray-background: rgba(27, 27, 32, 0.9);
+// $dark-gray-background: #1b1b20;
+$dark-gray-background: rgb(19, 19, 22);
+// $transparent-dark-gray-background: rgba(27, 27, 32, 0.9);
+$transparent-dark-gray-background: rgba(19, 19, 22, 0.9);
+$black: #080808;
+$black-transparent-90percent: rgba(8, 8, 8, 0.9);
+$black-transparent-50percent: rgba(8, 8, 8, 0.5);
+$medium-gray: rgb(53, 53, 63);
 ///uesd colors end here
-$medium-gray-background: #35353f;
 
 $transparent-medium-gray-background: rgba(53, 53, 63, 0.7);
 
 $light-blue: #26b9d1;
 $light-grey: #d9d9db;
-$soft-grey: #4e536b;
+$soft-grey: rgb(78, 83, 107);
 
 //from black and red glowing design palette
-$medium-grey: #161929;
-$dark-grey: #181b2b;
+$medium-grey: rgb(22, 25, 41);
+$dark-grey: rgb(24, 27, 43);
 
 //palett from cod picture
 $cod-green-lightest: #e7f5e4;
 $cod-green-medium: #a3d2ae;
 $cod-green-rich: #a0ceaa;
 $cod-green-dark: #646b3f;
-
-$dark-black-progressbar: #0d0c1e;
 
 //headerer constants
 $navitem-margin-on-mobile: 15px;
