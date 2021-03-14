@@ -1,0 +1,65 @@
+@use "node_modules/breakpoint-slicer" as bs;
+
+.side-panel {
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100vh;
+	max-width: 300px;
+	width: 80vw;
+	background-color: $dark-gray-background;
+	display: block;
+	transform: translate3d(80vw, 0, 0);
+	transition: transform 0.7s cubic-bezier(0, 0.52, 0, 1);
+	z-index: 9;
+
+	&.active {
+		transform: translate3d(0vw, 0, 0);
+
+		.menu {
+			display: flex;
+			margin-top: $nav-and-navitem-height-on-mobile;
+
+			@include bs.from(s-tablet, $slices: $slices) {
+				display: none;
+			}
+
+			.menu-items {
+				display: flex;
+				flex-direction: column;
+
+				.menu-item {
+					@include menu-buttons-links-common-styles;
+					border-bottom: $medium-gray 1px solid;
+					color: $text-white;
+					margin-left: 5%;
+					padding-bottom: 5px;
+					padding-top: 5px;
+					width: 90%;
+
+					&:last-child {
+						border-bottom: none;
+					}
+
+					a:hover,
+					button:hover {
+						@include menu-buttons-links-common-hover-styles;
+					}
+
+					a.selected {
+						background: none;
+						border: none;
+						padding: 13px;
+					}
+				}
+			}
+		}
+		@include bs.from(s-tablet, $slices: $slices) {
+			display: none;
+		}
+	}
+
+	@include bs.from(s-tablet, $slices: $slices) {
+		display: none;
+	}
+}

@@ -6,11 +6,8 @@ const appSlice = createSlice({
     name: 'app',
     initialState: APP_STATE_DEFAULT,
     reducers: {
-        closeSidePanel(state): void {
-            state.sidePanelOpened = false;
-        },
-        openSidePanel(state): void {
-            state.sidePanelOpened = true;
+        toggleSidePanel(state): void {
+            state.sidePanelOpened = !state.sidePanelOpened;
         },
         setAppLoading(state, action: PayloadAction<boolean>): void {
             state.appLoading = action.payload;
@@ -22,8 +19,7 @@ export type AppAction = ReturnType<typeof appSlice.actions[keyof typeof appSlice
 
 export const {
     setAppLoading,
-    closeSidePanel,
-    openSidePanel,
+    toggleSidePanel,
 } = appSlice.actions;
 
 export default appSlice.reducer;

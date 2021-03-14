@@ -5,6 +5,7 @@ import { fetchVotesThunk } from '@store/votes/votes.thunk';
 import Header from '@app/components/header/header';
 import VoteTable from '@components/vote-summary/vote-table/vote-table';
 import { selectVoteState } from '@store/votes/votes.selectors';
+import SidePanel from '@app/components/sidepanel/sidepanel';
 import { selectUserState } from '@store/auth/auth.selectors';
 // import { Roles } from '@app/store/auth/auth.constants';
 // import { getToken } from '@store/auth/auth.utils';
@@ -37,6 +38,7 @@ const VoteSummary = () => {
                 <div className="background-gradient">
                     <Header />
                     <VoteTable votes={votes.votes} />
+                    <SidePanel />
                 </div>
             </div>
         </>
