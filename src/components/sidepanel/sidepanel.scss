@@ -1,65 +1,103 @@
 @use "node_modules/breakpoint-slicer" as bs;
+.dark-overlay {
+    display: none;
+
+    &.active {
+        display: inline;
+        z-index: 8;
+        background-color: $black-transparent-50percent;
+        height: 100%;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+}
 
 .side-panel {
-	position: fixed;
-	top: 0;
-	right: 0;
-	height: 100vh;
-	max-width: 300px;
-	width: 80vw;
-	background-color: $dark-gray-background;
-	display: block;
-	transform: translate3d(80vw, 0, 0);
-	transition: transform 0.7s cubic-bezier(0, 0.52, 0, 1);
-	z-index: 9;
+    background-color: $dark-gray-background;
+    display: block;
+    height: 100vh;
+    max-width: 300px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transform: translate3d(80vw, 0, 0);
+    transition: transform 0.7s cubic-bezier(0, 0.52, 0, 1);
+    width: 80vw;
+    z-index: 9;
 
-	&.active {
-		transform: translate3d(0vw, 0, 0);
+    .close {
+        background: none;
+        border: none;
+        outline: none;
+        position: relative;
 
-		.menu {
-			display: flex;
-			margin-top: $nav-and-navitem-height-on-mobile;
+        &:after {
+            color: $cod-grey;
+            content: "×";
+            font-size: 2rem;
+            height: 50px;
+            left: 0;
+            line-height: 1.5rem;
+            position: absolute;
+            top: 0;
+            width: 50px;
+        }
 
-			@include bs.from(s-tablet, $slices: $slices) {
-				display: none;
-			}
+        &:hover:after {
+            @include menu-buttons-links-common-hover-styles;
+        }
+    }
 
-			.menu-items {
-				display: flex;
-				flex-direction: column;
+    &.active {
+        transform: translate3d(0vw, 0, 0);
+        transition: transform 0.7s cubic-bezier(0, 0.52, 0, 1);
 
-				.menu-item {
-					@include menu-buttons-links-common-styles;
-					border-bottom: $medium-gray 1px solid;
-					color: $text-white;
-					margin-left: 5%;
-					padding-bottom: 5px;
-					padding-top: 5px;
-					width: 90%;
+        .menu {
+            display: flex;
+            margin-top: $nav-and-navitem-height-on-mobile;
 
-					&:last-child {
-						border-bottom: none;
-					}
+            @include bs.from(s-tablet, $slices: $slices) {
+                display: none;
+            }
 
-					a:hover,
-					button:hover {
-						@include menu-buttons-links-common-hover-styles;
-					}
+            .menu-items {
+                display: flex;
+                flex-direction: column;
 
-					a.selected {
-						background: none;
-						border: none;
-						padding: 13px;
-					}
-				}
-			}
-		}
-		@include bs.from(s-tablet, $slices: $slices) {
-			display: none;
-		}
-	}
+                .menu-item {
+                    @include menu-buttons-links-common-styles;
+                    border-bottom: $medium-gray 1px solid;
+                    color: $text-white;
+                    margin-left: 5%;
+                    padding-bottom: 5px;
+                    padding-top: 5px;
+                    width: 90%;
 
-	@include bs.from(s-tablet, $slices: $slices) {
-		display: none;
-	}
+                    &:last-child {
+                        border-bottom: none;
+                    }
+
+                    a:hover,
+                    button:hover {
+                        @include menu-buttons-links-common-hover-styles;
+                    }
+
+                    a.selected {
+                        background: none;
+                        border: none;
+                        padding: 13px;
+                    }
+                }
+            }
+        }
+        @include bs.from(s-tablet, $slices: $slices) {
+            display: none;
+        }
+    }
+
+    @include bs.from(s-tablet, $slices: $slices) {
+        display: none;
+    }
 }

@@ -23,9 +23,13 @@ const SidePanel = () => {
     useOnClickOutside(ref, handleClickOutside, isSidepanelOpened)
 
     return (
-        <div ref={ref} className={`side-panel ${isSidepanelOpened ? 'active' : ''}`}>
-            <Menu />
-        </div>
+        <>
+            <div className={`dark-overlay ${isSidepanelOpened ? 'active' : ''}`}/>
+            <div ref={ref} className={`side-panel ${isSidepanelOpened ? 'active' : ''}`}>
+                <button className="close" onClick={()=>dispatch(toggleSidePanel())}/>
+                <Menu />
+            </div>
+        </>
     )
 }
 

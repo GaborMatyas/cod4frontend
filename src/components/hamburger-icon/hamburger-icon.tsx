@@ -10,17 +10,10 @@ const HamburgerIcon = () => {
     const dispatch = useDispatch();
     const noop = (): void => { /* do nothing */ };
 
-    // let handleClick;
-    // if (!isSidepanelOpened) {
-    //     handleClick = () => dispatch(toggleSidePanel());
-    // } else {
-    //     handleClick = () => noop();
-    // }
-
     return (
         <div
             className={`hamburger-container ${isSidepanelOpened ? 'active' : ''}`}
-        // onClick={handleClick}
+            onClick={()=>dispatch(toggleSidePanel())}
         >
             <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 200 200">
                 <g strokeWidth="6.5" strokeLinecap="round">
