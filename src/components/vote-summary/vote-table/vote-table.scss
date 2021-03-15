@@ -1,79 +1,78 @@
 @use "node_modules/breakpoint-slicer" as bs;
 
 .vote-table {
-	align-items: center;
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
-	justify-content: center;
-	margin-bottom: auto;
-	margin-top: auto;
-	max-height: 750px;
-	max-width: 410px;
-	width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    margin-bottom: auto;
+    margin-top: auto;
+    max-height: 75vh;
+    max-width: 410px;
+    width: 100%;
 
-	@include bs.from(m-desktop, $slices: $slices) {
-		align-self: flex-start;
-		margin-left: 10vw;
-	}
+    @include bs.from(m-desktop, $slices: $slices) {
+        align-self: flex-start;
+        margin-left: 10vw;
+    }
 
-	@include bs.from(hd, $slices: $slices) {
-		margin-left: 15vw;
-		max-height: 850px;
-		max-width: 550px;
-	}
+    @include bs.from(hd, $slices: $slices) {
+        margin-left: 15vw;
+        max-width: 550px;
+    }
 
-	.button-container {
-		align-items: flex-start;
-		align-self: flex-end;
-		display: flex;
-		margin-top: auto;
-		min-height: 75px;
-		width: 100%;
+    .button-container {
+        align-items: flex-start;
+        align-self: flex-end;
+        display: flex;
+        margin-top: auto;
+        min-height: 75px;
+        width: 100%;
 
-		@include bs.from(s-tablet, $slices: $slices) {
-			flex-direction: column;
-		}
+        @include bs.from(s-tablet, $slices: $slices) {
+            flex-direction: column;
+        }
 
-		.vote-button,
-		.vote-table-reset-button {
-			@include button-style;
-			display: inline;
-			height: 100%;
+        .vote-button,
+        .vote-table-reset-button {
+            @include button-style;
+            display: inline;
+            height: 100%;
 
-			@include bs.from(s-tablet, $slices: $slices) {
-				height: 65px;
-				margin-top: 15px;
-				width: 100%;
-			}
-		}
+            @include bs.from(s-tablet, $slices: $slices) {
+                height: 65px;
+                margin-top: 15px;
+                width: 100%;
+            }
+        }
 
-		.vote-button {
-			background-color: $main-green-transparent;
+        .vote-button {
+            background-color: $main-green-transparent;
 
-			@include bs.from(l-mobile, $slices: $slices) {
-				background-color: initial;
-			}
-		}
+            @include bs.from(l-mobile, $slices: $slices) {
+                background-color: initial;
+            }
+        }
 
-		.vote-table-reset-button {
-			background-color: $red-transparent;
-			border-color: $red;
-			box-shadow: 0 2.8px 2.2px rgba(231, 76, 60, 0.02),
-				0 6.7px 5.3px rgba(231, 76, 60, 0.028),
-				0 12.5px 10px rgba(231, 76, 60, 0.035),
-				0 22.3px 17.9px rgba(231, 76, 60, 0.042),
-				0 41.8px 33.4px rgba(231, 76, 60, 0.05);
-			color: $red;
+        .vote-table-reset-button {
+            background-color: $red-transparent;
+            border-color: $red;
+            box-shadow: 0 2.8px 2.2px rgba(231, 76, 60, 0.02),
+                0 6.7px 5.3px rgba(231, 76, 60, 0.028),
+                0 12.5px 10px rgba(231, 76, 60, 0.035),
+                0 22.3px 17.9px rgba(231, 76, 60, 0.042),
+                0 41.8px 33.4px rgba(231, 76, 60, 0.05);
+            color: $red;
 
-			@include bs.from(l-mobile, $slices: $slices) {
-				background-color: initial;
-			}
+            @include bs.from(l-mobile, $slices: $slices) {
+                background-color: initial;
+            }
 
-			&:hover {
-				background-color: $red-transparent;
-				transition: background-color 0.3s ease-in;
-			}
-		}
-	}
+            &:hover {
+                background-color: $red-transparent;
+                transition: background-color 0.3s ease-in;
+            }
+        }
+    }
 }

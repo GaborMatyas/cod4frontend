@@ -1,185 +1,190 @@
 @use "node_modules/breakpoint-slicer" as bs;
 
 .authpage-background-picture {
-	background-size: cover;
-	background: url("../../assets/img/ghostBackgroundAuthPageMobile.png") left
-		bottom / cover no-repeat;
-	height: 100vh;
-	width: 100%;
+    background-size: cover;
+    background: url("../../assets/img/ghostBackgroundAuthPageMobile.png") left
+        bottom / cover no-repeat;
+    height: 100vh;
+    width: 100%;
 
-	@include bs.from(s-tablet, $slices: $slices) {
-		background: url("../../assets/img/ghostBackgroundAuthPage.png") left
-			center / cover no-repeat;
-		background-size: cover;
-	}
+    @include bs.from(s-tablet, $slices: $slices) {
+        background: url("../../assets/img/ghostBackgroundAuthPage.png") left
+            center / cover no-repeat;
+        background-size: cover;
+    }
 
-	.background-gradient {
-		align-items: center;
-		background: linear-gradient(
-			28deg,
-			rgba(78, 83, 107, 0.6) 0%,
-			rgba(24, 27, 43, 0.6) 100%
-		);
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-		position: relative;
-		width: 100%;
+    .background-gradient {
+        align-items: center;
+        background: linear-gradient(
+            28deg,
+            rgba(78, 83, 107, 0.6) 0%,
+            rgba(24, 27, 43, 0.6) 100%
+        );
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+        width: 100%;
 
-		@include bs.from(m-desktop, $slices: $slices) {
-			flex-direction: row;
-			justify-content: flex-end;
-		}
+        @include bs.from(m-desktop, $slices: $slices) {
+            flex-direction: row;
+            justify-content: flex-end;
+        }
 
-		.auth-page-big-logo {
-			display: none;
+        .auth-page-big-logo {
+            display: none;
 
-			@include bs.from(m-desktop, $slices: $slices) {
-				background: url("../../assets/img/cod4-desktop-logo.png") left
-					center / cover no-repeat;
-				display: block;
-				height: 300px;
-				left: calc(60% / 2 - 300px);
-				position: absolute;
-				top: 100px;
-				width: 600px;
+            @include bs.from(m-desktop, $slices: $slices) {
+                background: url("../../assets/img/cod4-desktop-logo.png") left
+                    center / cover no-repeat;
+                display: block;
+                height: 200px;
+                left: calc(60% / 2 - 200px);
+                position: absolute;
+                top: 100px;
+                width: 400px;
 
-				@include bs.from(l-desktop, $slices: $slices) {
-					left: calc(55% / 2 - 300px);
-				}
+                @include bs.from(l-desktop, $slices: $slices) {
+                    left: calc(55% / 2 - 200px);
+                }
 
-				@include bs.from(xl-desktop, $slices: $slices) {
-					left: calc(50% / 2 - 300px);
-				}
-			}
-		}
+                @include bs.from(xl-desktop, $slices: $slices) {
+                    left: calc(50% / 2 - 200px);
+                }
+            }
+        }
 
-		.login-container-background {
-			align-items: center;
-			background-color: rgba(27, 27, 32, 0.4);
-			display: flex;
-			flex-direction: column;
-			height: 100vh;
-			justify-content: center;
-			width: 100%;
+        .login-container-background {
+            align-items: center;
+            background-color: rgba(27, 27, 32, 0.4);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            width: 100%;
 
-			@include bs.from(m-desktop, $slices: $slices) {
-				background-color: rgba(27, 27, 32, 0.9);
-				width: 40%;
-			}
+            @include bs.from(m-desktop, $slices: $slices) {
+                background-color: rgba(27, 27, 32, 0.9);
+                width: 40%;
+            }
 
-			@include bs.from(l-desktop, $slices: $slices) {
-				width: 45%;
-			}
+            @include bs.from(l-desktop, $slices: $slices) {
+                width: 45%;
+            }
 
-			@include bs.from(xl-desktop, $slices: $slices) {
-				width: 50%;
-			}
+            @include bs.from(xl-desktop, $slices: $slices) {
+                width: 50%;
+            }
 
-			.login-container {
-				align-items: center;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				margin-bottom: auto;
-				margin-top: auto;
-				max-width: 450px;
-				overflow: auto;
-				height: 100;
-				width: 100%;
+            .login-container {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                height: 100;
+                justify-content: center;
+                margin-bottom: auto;
+                margin-top: auto;
+                max-width: 450px;
+                overflow: auto;
+                width: 100%;
 
-				@include bs.from(s-tablet, $slices: $slices) {
-					width: 75%;
-					overflow: hidden;
-				}
+                @include bs.from(s-tablet, $slices: $slices) {
+                    // width: 75%;
+                    overflow: hidden;
+                }
 
-				@include bs.from(m-desktop, $slices: $slices) {
-					max-width: 600px;
-					width: 85%;
-				}
-				.logo {
-					@include bs.to(m-mobile, $slices: $slices) {
-						display: none;
-					}
+                @include bs.from(m-desktop, $slices: $slices) {
+                    max-width: 600px;
+                }
 
-					@include bs.from(l-mobile, $slices: $slices) {
-						display: block;
-						height: 80px;
-						margin-bottom: 25px;
-						margin-top: 50px;
-					}
+                @include bs.from(l-desktop, $slices: $slices) {
+                    width: 85%;
+                }
 
-					@include bs.from(m-desktop, $slices: $slices) {
-						display: none;
-					}
-				}
+                .logo {
+                    @include bs.to(m-mobile, $slices: $slices) {
+                        display: none;
+                    }
 
-				.title-container {
-					text-align: center;
+                    @include bs.from(l-mobile, $slices: $slices) {
+                        display: block;
+                        height: 80px;
+                        margin-bottom: 25px;
+                        margin-top: 50px;
+                    }
 
-					.headline,
-					.instruction {
-						display: none;
+                    @include bs.from(m-desktop, $slices: $slices) {
+                        display: none;
+                    }
+                }
 
-						@include bs.from(m-desktop, $slices: $slices) {
-							color: $text-white;
-							display: block;
-							font-size: $headline;
-							letter-spacing: 1px;
-							line-height: 1.5;
-							margin: auto;
-							text-align: start;
-							width: 80%;
-						}
-					}
+                .title-container {
+                    text-align: center;
 
-					.instruction {
-						color: $cod-grey;
-						font-size: $small-note-font-size;
-						letter-spacing: 1px;
-						line-height: 1.5rem;
-						margin-top: 32px;
-					}
+                    .headline,
+                    .instruction {
+                        display: none;
 
-					.form-title {
-						color: $text-white;
-						font-size: $main-title;
-						letter-spacing: 1px;
-					}
-				}
+                        @include bs.from(m-desktop, $slices: $slices) {
+                            color: $text-white;
+                            display: block;
+                            font-size: $headline;
+                            letter-spacing: 1px;
+                            line-height: 1.5;
+                            margin: auto;
+                            text-align: start;
+                            width: 80%;
+                        }
+                    }
 
-				.form {
-					@include bs.to(s-mobile, $slices: $slices) {
-						margin-bottom: 30px;
-						margin-top: 30px;
+                    .instruction {
+                        color: $cod-grey;
+                        font-size: $small-note-font-size;
+                        letter-spacing: 1px;
+                        line-height: 1.5rem;
+                        margin-top: 32px;
+                    }
 
-						.input-group {
-							margin-bottom: 50px;
-						}
-					}
-				}
+                    .form-title {
+                        color: $text-white;
+                        font-size: $main-title;
+                        letter-spacing: 1px;
+                        margin-bottom: 0;
+                    }
+                }
 
-				.change-page {
-					margin: auto;
-					width: 80%;
+                // .form {
+                //     @include bs.to(s-mobile, $slices: $slices) {
+                //         margin-bottom: 30px;
+                //         margin-top: 30px;
 
-					.question {
-						color: $light-grey;
-						display: block;
-						font-size: $small-note-font-size;
-					}
+                //         .input-group {
+                //             margin-bottom: 50px;
+                //         }
+                //     }
+                // }
 
-					button {
-						background: none;
-						border: none;
-						color: $main-green;
-						font-size: $small-note-font-size;
-						margin: auto auto 20px auto;
-						outline: none;
-						padding: 20px 20px 20px 0px;
-					}
-				}
-			}
-		}
-	}
+                .change-page {
+                    margin: auto;
+                    width: 80%;
+
+                    .question {
+                        color: $light-grey;
+                        display: block;
+                        font-size: $small-note-font-size;
+                    }
+
+                    button {
+                        background: none;
+                        border: none;
+                        color: $main-green;
+                        font-size: $small-note-font-size;
+                        margin: auto auto 20px auto;
+                        outline: none;
+                        padding: 20px 20px 20px 0px;
+                    }
+                }
+            }
+        }
+    }
 }
